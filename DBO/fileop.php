@@ -17,10 +17,10 @@ function InitDB_FILE()
 	//print_r($array);
 	fclose($file_handle);
 	$temp = new DBO();
-	$object = $temp->getInstance();
+	//$object = $temp->getInstance();
 
 }
 
-InitDB_FILE();
+//InitDB_FILE();
 //echo $object->register('¸µÏàÔÆ2ºÅ','1','1','450306159@qq.com','question','answer','a','1','picname');
 ?>
