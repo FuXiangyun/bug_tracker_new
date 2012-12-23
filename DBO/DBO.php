@@ -27,17 +27,17 @@ class DBO
 	private static $dbserver;
 	private static $dbuser;
 	private static $dbpassword;
-	private static $dbo_object;
+	//private static $dbo_object;
 	//InitDBO
 	//$dbserver:数据库服务器名
 	//$dbuser:数据库用户
         //$dbpassword:数据库密码
         //无返回值
 
-	function getInstance()
-	{
-		return $this->dbo_object;
-	}
+	//function getInstance()
+	//{
+	//	return $this->dbo_object;
+	//}
 	
 	
 	
@@ -46,7 +46,7 @@ class DBO
 		$this->dbserver = $dbserver;
 		$this->dbuser = $dbuser;
 		$this->dbpassword = $dbpassword;
-		$this->dbo_object = new DBO();
+		//$this->dbo_object = new DBO();
 		//$this->$dbpassword = $dbpassword;
 	}
 	
