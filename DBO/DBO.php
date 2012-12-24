@@ -152,5 +152,18 @@ class DBO
 			mysql_close($conn);
 			return $array[0];
 		}
+                
+                
+                public static function upload_bug($UserName,$BugPicPath,$BugOS,$BugProgName,$BugTag,$BugDes)
+                {
+                    $conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
+                    mysql_select_db("bbs_database",$conn) or die ("can't select database");
+                    mysql_query("SET NAMES UTF8");//加上这句
+                    $result=  mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`) VALUES ('$UserName','$BugPicPath')");
+                    //$array = mysql_fetch_array($result);
+                    mysql_close($conn);
+                    return $array[0];
+                }
+                
 }
 ?>
