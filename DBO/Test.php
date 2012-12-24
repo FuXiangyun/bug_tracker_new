@@ -17,13 +17,16 @@ $object = new DBO();
 //InitDB_FILE();
 
 
-$object->InitDBO("localhost","root","");
+DBO::InitDBO("localhost","root","");
 //$array  = $object->LoginCheck("fuxiangyun","fuxiangyun");
 echo $array[0];
 
 echo "</br>".section2."</br>";
 
-echo $object->register('傅相云2号','1','1','450306159@qq.com','question','answer','a','1','picname');
+
+echo DBO::LoginCheck("傅相云2号","1");
+
+echo DBO::register('傅相云2号','1','1','450306159@qq.com','question','answer','a','1','picname');
 
 
 ?>
