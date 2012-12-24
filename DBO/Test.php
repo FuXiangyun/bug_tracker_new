@@ -10,20 +10,22 @@
 <body>
 <?php
 include_once("DBO.php");
-include_once("fileop.php");
-$object = new DBO();
+
+
 
 
 //InitDB_FILE();
 
+ 
+//DBO::InitDBO("localhost","root","");
 
-$object->InitDBO("localhost","root","");
-//$array  = $object->LoginCheck("fuxiangyun","fuxiangyun");
-echo $array[0];
+DBO::InitDB();
+echo DBO::LoginCheck("fuxiangyun","fuxiangyun");
+
 
 echo "</br>".section2."</br>";
 
-echo $object->register('傅相云2号','1','1','450306159@qq.com','question','answer','a','1','picname');
+echo DBO::register('傅相云2号','1','1','450306159@qq.com','question','answer','a','1','picname');
 
 
 ?>

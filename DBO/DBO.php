@@ -24,9 +24,9 @@ return $ret;
 
 class DBO
 {
-	private static $dbserver;
-	private static $dbuser;
-	private static $dbpassword;
+	public static $dbserver;
+	public static $dbuser;
+	public static $dbpassword;
 	//private static $dbo_object;
 	//InitDBO
 	//$dbserver:数据库服务器名
@@ -41,25 +41,45 @@ class DBO
 	
 	
 	
-	function InitDBO($dbserver,$dbuser,$dbpassword)
+	public static function InitDBO($dbserver,$dbuser,$dbpassword)
 	{
-		$this->dbserver = $dbserver;
-		$this->dbuser = $dbuser;
-		$this->dbpassword = $dbpassword;
+		self::$dbserver =$dbserver;
+		self::$dbuser = $dbuser;
+		self::$dbpassword = $dbpassword;
+                //echo self::$dbserver;
 		//$this->dbo_object = new DBO();
 		//$this->$dbpassword = $dbpassword;
 	}
+        //从dbconfig.ini中读取数据库配置信息
+        public static function InitDB()
+        {               
+                $i = 0;
+                $file_handle = fopen("dbconfig.ini", "r");
+                while (!feof($file_handle)) {
+                   $line = fgets($file_handle);
+                   $begin = strpos($line, '=');
+                   $line = substr($line,$begin+1);
+                   $array[$i] = trim($line);
+                   $i = $i+1;
+                   //echo $i;
+                   //echo $line."</br>";
+                }
+                //print_r($array);
+                fclose($file_handle);
+                DBO::InitDBO($array[0], $array[1], $array[2]);
+                //echo self::$dbserver;
+        }
 	
 	//LoginCheck
         //$username:用户名
         //$password:密码
-        //返回值:$array数组。
-        //使用范例：$array = $object->LoginCheck($username,$password);
-	function LoginCheck($username,$password)//三种返回值  正确 ， 密码错误 ， 用户不存在
+        //返回值:字符串。
+        //使用范例：DBO::LoginCheck($username,$password);
+	public static function LoginCheck($username,$password)//三种返回值  正确 ， 密码错误 ， 用户不存在
 	{
 		//$conn = mysql_connect("localhost", "root","");
 		//$conn = mysql_connect("localhost","root","");
-	$conn = mysql_connect($this->dbserver,$this->dbuser,$this->dbpassword);
+	$conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
 	//mysql_query("SET NAMES 'gb2312'",$conn); 
             if($conn)
             {
@@ -73,8 +93,9 @@ class DBO
                     $result = mysql_query('select @result;');
                     $array = mysql_fetch_array($result);
                             //echo '<pre>';print_r($array);
-                    return $array;
-					mysql_close($conn);
+                    mysql_close($conn);
+                    return $array[0];
+		
             }
        }
 		
@@ -82,7 +103,7 @@ class DBO
 		///register函数
 		///$UserName,$NickName,$Password不能为空
 		///可判断用户名为空，邮箱地址不可发，昵称为空，密码为空，该用户是否已经注册过
-		function register($UserName,$NickName,$Password,$Email,$Question,$Answer,$SignDetail,$HavePic,$PicName)
+		public static function register($UserName,$NickName,$Password,$Email,$Question,$Answer,$SignDetail,$HavePic,$PicName)
 		{
 			//echo "1";
 			$error_EM_illegal = "邮箱地址不合法";
@@ -91,7 +112,7 @@ class DBO
 			$error_PS_isnull = "密码为空";
 			
 			$RegTime = date('Y-m-d',time());//获取注册时间
-			$conn = mysql_connect($this->dbserver,$this->dbuser,$this->dbpassword);
+			$conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
 			//echo $UserName.$NickName.$Password.$Email.$Question.$Answer.$RegTime.$SignDetail.$HavePic.$PicName;
 			$sql = "call Registeration('".$UserName."','".$NickName."','".$Password."','".$Email."','".$Question."','".$Answer."','".$RegTime."','".$SignDetail."','".$HavePic."','".$PicName."',"."@result)";
 			if(!emailcheck($Email))

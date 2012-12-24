@@ -16,11 +16,9 @@ function InitDB_FILE()
 	}
 	//print_r($array);
 	fclose($file_handle);
-	$temp = new DBO();
-	//$object = $temp->getInstance();
 
 }
 
 //InitDB_FILE();
-//echo $object->register('¸µÏàÔÆ2ºÅ','1','1','450306159@qq.com','question','answer','a','1','picname');
+//echo $object->register('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½','1','1','450306159@qq.com','question','answer','a','1','picname');
 ?>
