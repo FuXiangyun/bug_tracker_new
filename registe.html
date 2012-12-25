@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册新用户</title>
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+<script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
+<script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
+</head>
+<body>
+<script>
+function TestUserOk()
+{
+  var taget_obj = document.getElementById('testCanReg');
+  myajax = new DedeAjax(taget_obj,false,false,"","","");
+  myajax.SendGet2("index_do.php?userid=" + document.form2.userid.value +"&fmdo=user&dopost=checkuser");
+  myajax = null;
+}
+function checkSubmit()
+{
+if(document.form2.userid.value=="")
+{
+ document.form2.userid.focus();
+ alert("用户名不能为空！");
+ return false;
+}
+if(document.form2.userpwd.value=="")
+{
+ document.form2.userpwd.focus();
+ alert("登陆密码不能为空！");
+ return false;
+}
+if(document.form2.userpwdok.value!=document.form2.userpwd.value)
+{
+ document.form2.userpwdok.focus();
+ alert("两次密码不一致！");
+ return false;
+}
+if(document.form2.email.value=="")
+{
+ document.form2.email.focus();
+ alert("Email 不能为空！");
+ return false;
+}
+if(document.form2.uname.value=="")
+{
+ document.form2.uname.focus();
+ alert("用户昵称不能为空！");
+ return false;
+}
+if(document.form2.vdcode.value=="")
+{
+ document.form2.vdcode.focus();
+ alert("验证码不能为空！");
+ return false;
+}
+}
+function ShowObj(objname){
+   var obj = $Obj(objname);
+   obj.style.display = "block";
+}
+
+function HideObj(objname){
+   var obj = $Obj(objname);
+   obj.style.display = "none";
+}
+
+function tabit(divName,btn){
+	if (btn ==1){
+		document.getElementById(divName).style.display = "block";
+	}
+	else{
+		document.getElementById(divName).style.display = "none";
+	}
+}
+</script>
+<div class="wrapper row1">
+    <header id="header" class="clear">
+    <hgroup>
+      <h1><a href="index.html">捉虫</a></h1>
+      <h2>The New Bug Tracker</h2>
+    </hgroup>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Search:</legend>
+        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+        <input type="submit" id="sf_submit" value="提交">
+      </fieldset>
+    </form>
+    <nav class="clear">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="activities.html">活动</a></li>
+        <li><a href="bbs.html">讨论</a></li>
+        <li><a href="top-list.html">排行</a></li>
+        <li><a href="bug-submit.html">捉虫</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li class="last"><a href="#">不知道放什么好</a></li>
+        <li class="end"><a href="login.html">登录</a></li>
+        <li class="active"><a href="registe.html">注册</a></li>
+      </ul></nav> </header></div>
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <!-- content body -->
+    <div id="content">
+
+      <section id="comments">
+          <h2>注册新用户</h2>
+        <form action="#" method="post" onsubmit="return checkSubmit();">
+            <table>
+                <tr><p>用户名<input type="hidden" name="name" value="user">
+                    <input type="hidden" name="dopost" value="regok">
+                <input name="userid" type="text" onchange="TestUserOk()"/> * </p>
+                        <p><a href="javascript:TestUserOk();">[检查是否已被占用]</a></p></tr>
+            <tr><p>昵称<input name="uname" type="text"/> *</p></tr>
+            <tr><p>
+              邮箱<input name="email" type="text" /> *
+          </p></tr>
+            <tr><p>
+              密码<input name="userpwd" type="password"/> *
+          </p></tr>
+            <tr><p>确认密码<input name="userpwdok" type="password" /> *</p></tr>
+            <tr><p>验证码&nbsp; <input name="vdcode" type="text"/> 
+              <img src="XXXX" name='img1' id="img1" alt="换一张" onClick="document.getElementById('img1').src='/include/vdimgck.php?rnd=' + Math.random()" style="cursor: hand" /></p></tr>
+            <tr></tr><tr></tr><tr align="center"><input type="submit" name="Submit2" value="确定注册"/>
+			</tr></table>
+        </form>
+      </section>
+    </div>
+    <!-- right column -->
+    <aside id="right_column">
+      <h2>功能连接</h2>
+      <nav>
+        <ul>
+          <li><a href="#">功能连接1</a></li>
+          <li><a href="#">功能连接2</a>
+            <ul>
+              <li><a href="#">功能连接2.1</a></li>
+              <li><a href="#">功能连接2.2</a></li>
+            </ul>
+          </li>
+          <li><a href="#">功能连接3</a></li>
+        </ul>
+      </nav>
+      <!-- /nav -->
+      <section>
+        <h2>联系我们</h2>
+        <address>
+        地址<br>
+        Address Line 1<br>
+        Address Line 2<br>
+        Town/City<br>
+        Postcode/Zip<br>
+        <br>
+        Tel: xxxx xxxx xxxxxx<br>
+        Email: <a href="#">@gmail.com</a>
+        </address>
+      </section>
+    </aside>
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <div id="footer" class="clear">
+    <!-- ########################################################################################## -->
+    <section class="one_quarter">
+      <h2 class="title">From The Blog</h2>
+      <article>
+        <header>
+          <h2>Post Title</h2>
+        </header>
+        <p>写不出来</p>
+        <footer class="more"><a href="#">Read More &raquo;</a></footer>
+      </article>
+    </section>
+    <section class="one_quarter">
+      <h2 class="title">Quick Links</h2>
+      <nav>
+        <ul>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li class="last"><a href="#">随便链接嘛</a></li>
+        </ul>
+      </nav>
+    </section>
+    <section class="two_quarter lastbox">
+      <h2 class="title">About US</h2>
+      <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt="">
+      <p>不知道写啥！！！</p>
+      <footer class="more"><a href="#">Read More &raquo;</a></footer>
+    </section>
+    <!-- ########################################################################################## -->
+  </div>
+</div>
+<!-- Copyright -->
+<div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">The Bug Tracker</a></p>
+  </footer>
+</div>
+</body>
+</html>
