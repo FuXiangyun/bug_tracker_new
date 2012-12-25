@@ -24,7 +24,7 @@ echo DBO::LoginCheck("fuxiangyun","fuxiangyun");
 
 
 echo "</br>".section2."</br>";
-DBO::upload_bug("fuxiangyun" ,"BugPicPath", "BugOS", "BugProgName", "BugTag", "BugDes");
+echo DBO::upload_bug("傅相云2号" ,"BugPicPath", "BugOS", "BugProgName", "BugTag", "BugDes","BugName");
 echo DBO::register('傅相云2号','1','1','450306159@qq.com','question','answer','a','1','picname');
 
 

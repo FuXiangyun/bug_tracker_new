@@ -153,17 +153,28 @@ class DBO
 			return $array[0];
 		}
                 
-                
-                public static function upload_bug($UserName,$BugPicPath,$BugOS,$BugProgName,$BugTag,$BugDes)
-                {
-                    $conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
-                    mysql_select_db("bbs_database",$conn) or die ("can't select database");
-                    mysql_query("SET NAMES UTF8");//加上这句
-                    $result=  mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`) VALUES ('$UserName','$BugPicPath')");
-                    //$array = mysql_fetch_array($result);
-                    mysql_close($conn);
-                    return $array[0];
-                }
+        //提交Bug的操作封装
+        //返回值：插入成功返回BugID，不成功返回-1
+        public static function upload_bug($UserName,$BugPicPath,$BugOS,$BugProgName,$BugTag,$BugDes,$BugName)
+        {
+            $conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
+            mysql_select_db("bbs_database",$conn) or die ("can't select database");
+            mysql_query("SET NAMES UTF8");//加上这句
+            $result;
+            if(mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`,`BugOS`,`BugProgName`,`BugTag`,`BugDes`,`BugName`) 
+                VALUES ('$UserName','$BugPicPath','$BugOS','$BugProgName','$BugTag','$BugDes','$BugName')"))
+            {
+                $result = mysql_insert_id();
+            }
+            else
+            {
+                $result = -1;
+            }
+            //$array = mysql_fetch_array($result);
+            mysql_close($conn);
+            return $result;
+            //return $array[0];
+        }
                 
 }
 ?>

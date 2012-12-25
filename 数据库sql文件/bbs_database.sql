@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-13 20:38:48
+Date: 2012-12-25 10:11:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,28 +75,33 @@ CREATE TABLE `bugdetail` (
   `BugOS` varchar(150) default NULL,
   `BugProgName` varchar(50) default NULL,
   `BugTag` text,
+  `BugName` varchar(50) default NULL,
   `BugDes` text,
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
-INSERT INTO `bugdetail` VALUES ('1', null, null, null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('3', null, 'fuxiangyun', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('4', null, 'fuxiangyun', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('5', null, 'fuxiangyun', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('9', null, 'Fuxiangyun', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('11', null, 'Fuxiangyun', '2012-09-09 09.49.33.jpg', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('12', null, 'fuxiangyun', '你好', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('13', null, 'Fuxiangyun', 'ä½ å¥½', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('14', null, 'Fuxiangyun', 'ä½ å¥½', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('15', null, 'Fuxiangyun', 'ä½ å¥½', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('16', null, 'Fuxiangyun', '', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('17', null, 'Fuxiangyun', '102904_æ²ˆè¶…_ERå›¾.png', null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('18', null, 'Fuxiangyun', '102904_沈超_ER图.png', null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('22', null, 'fuxiangyun', 'filename', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('23', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('24', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('25', null, '傅相云2号', 'BugPicPath', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('26', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('27', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('28', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('29', null, 'fuxiangyun', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('30', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('31', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('33', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', 'BugName');
+INSERT INTO `bugdetail` VALUES ('34', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', 'BugName');
+INSERT INTO `bugdetail` VALUES ('35', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('36', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('37', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('38', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
+INSERT INTO `bugdetail` VALUES ('39', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -174,6 +179,20 @@ BEGIN
 	ELSE
 		set Result = "用户名已存在";
 	END IF;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `Upload_bug`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Upload_bug`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text,IN `BugName` varchar(50))
+BEGIN
+	#Routine body goes here...
+	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,BugName)
+	values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,BugName);
 END
 ;;
 DELIMITER ;
