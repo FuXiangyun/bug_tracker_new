@@ -106,10 +106,10 @@ class DBO
 		public static function register($UserName,$NickName,$Password,$Email,$Question,$Answer,$SignDetail,$HavePic,$PicName)
 		{
 			//echo "1";
-			$error_EM_illegal = "邮箱地址不合法";
-			$error_UN_isnull = "用户名为空";
-			$error_NN_isnull = "昵称为空";
-			$error_PS_isnull = "密码为空";
+			$error_EM_illegal = 1;//"邮箱地址不合法";
+			$error_UN_isnull = 2;//"用户名为空";
+			$error_NN_isnull = 3;//"昵称为空";
+			$error_PS_isnull = 4;//"密码为空";
 			
 			$RegTime = date('Y-m-d',time());//获取注册时间
 			$conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
@@ -150,6 +150,7 @@ class DBO
 			
 			//echo "</br>".$sql;
 			mysql_close($conn);
+                        //echo $array[0];
 			return $array[0];
 		}
                 
@@ -161,8 +162,10 @@ class DBO
             mysql_select_db("bbs_database",$conn) or die ("can't select database");
             mysql_query("SET NAMES UTF8");//加上这句
             $result;
-            if(mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`,`BugOS`,`BugProgName`,`BugTag`,`BugDes`,`BugName`) 
-                VALUES ('$UserName','$BugPicPath','$BugOS','$BugProgName','$BugTag','$BugDes','$BugName')"))
+            $BugUploadedTime = date('Y-m-d H:i:s',time());
+            //echo $BugUploadedTime;
+            if(mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`,`BugOS`,`BugProgName`,`BugTag`,`BugDes`,`BugName`,`BugUploadedTime`) 
+                VALUES ('$UserName','$BugPicPath','$BugOS','$BugProgName','$BugTag','$BugDes','$BugName','$BugUploadedTime')"))
             {
                 $result = mysql_insert_id();
             }
