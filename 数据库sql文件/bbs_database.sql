@@ -10,10 +10,26 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-25 10:11:11
+Date: 2012-12-26 09:01:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `bbs_activity`
+-- ----------------------------
+DROP TABLE IF EXISTS `bbs_activity`;
+CREATE TABLE `bbs_activity` (
+  `act_name` varchar(50) NOT NULL,
+  `act_detail` text,
+  `begin_time` datetime default NULL,
+  `end_time` datetime default NULL,
+  PRIMARY KEY  (`act_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bbs_activity
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `bbs_article`
@@ -80,12 +96,12 @@ CREATE TABLE `bugdetail` (
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
-INSERT INTO `bugdetail` VALUES ('22', null, 'fuxiangyun', 'filename', null, null, null, null, null);
+INSERT INTO `bugdetail` VALUES ('22', '2012-12-25 21:05:42', 'fuxiangyun', 'filename', null, null, null, null, null);
 INSERT INTO `bugdetail` VALUES ('23', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
 INSERT INTO `bugdetail` VALUES ('24', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
 INSERT INTO `bugdetail` VALUES ('25', null, '傅相云2号', 'BugPicPath', null, null, null, null, null);
@@ -102,6 +118,34 @@ INSERT INTO `bugdetail` VALUES ('36', null, '傅相云2号', 'BugPicPath', 'BugO
 INSERT INTO `bugdetail` VALUES ('37', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
 INSERT INTO `bugdetail` VALUES ('38', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
 INSERT INTO `bugdetail` VALUES ('39', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('40', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('41', '2012-12-25 13:06:40', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('42', '2012-12-25 13:06:51', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('43', '2012-12-25 13:07:17', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('44', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('45', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('46', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('47', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('48', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('49', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('50', '2012-12-25 13:17:35', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
+
+-- ----------------------------
+-- Table structure for `in_activity_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `in_activity_user`;
+CREATE TABLE `in_activity_user` (
+  `act_name` varchar(50) NOT NULL,
+  `UserName` varchar(20) default NULL,
+  PRIMARY KEY  (`act_name`),
+  KEY `FK_Reference_6` (`UserName`),
+  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
+  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`act_name`) REFERENCES `bbs_activity` (`act_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of in_activity_user
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -150,11 +194,11 @@ BEGIN
 	declare v_pass varchar(40);
 	select userinfo.password into v_pass from userinfo where userinfo.UserName = username;
 	if v_pass = password THEN
-		set result = "正确";
+		set result = "ok";
 	ELSEIF v_pass is NULL THEN
-		set result = "用户不存在";
+		set result = "username wrong";
 	ELSE
-		set result = "密码错误";
+		set result = "password wrong";
 	end if;
 END
 ;;
@@ -175,9 +219,9 @@ BEGIN
 	IF v_temp = "" THEN
 		insert into userinfo (UserName,NickName,Password,Email,Question,Answer,RegTime,SignDetail,HavePic,PicName) 
 		VALUES(UserName,NickName,Password,Email,Question,Answer,RegTime,SignDetail,HavePic,PicName);
-		set Result = "成功";
+		set Result = "success";
 	ELSE
-		set Result = "用户名已存在";
+		set Result = "exist";
 	END IF;
 END
 ;;
