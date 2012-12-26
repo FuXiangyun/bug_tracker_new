@@ -45,7 +45,7 @@
       <!-- ########################################################################################## -->
       <!-- ########################################################################################## -->
       <!-- ########################################################################################## -->
-              <form name="myform" action="" method="post" enctype="" onsubmit="">
+              <form name="myform" action="source/Bug_submit.php" method="post" enctype="" onsubmit="">
             <table width="700" border="3" align="left" cellpadding="0" cellspacing="0">
                 <tbody><tr>
                     <td valign="left" background="">
@@ -66,14 +66,14 @@
                             </tr>
                             <tr><td height="40" align="right">&nbsp;</td>
                                 <td class="">*Bug名称</td>
-                                <td><input name="Account" type="text" id="Account" maxlength="20" datatype="Limit" min="4" max="20" msg=""></td>
+                                <td><input name="BugName" type="text" id="Account" maxlength="20" datatype="Limit" min="4" max="20" msg=""></td>
                                 <td class="">*产品名称</td>
-                                <td><input name="Account" type="text" id="Account" maxlength="20" datatype="Limit" min="4" max="20" msg=""></td>
+                                <td><input name="BugProgName" type="text" id="Account" maxlength="20" datatype="Limit" min="4" max="20" msg=""></td>
                             </tr>
                             <tr bgcolor="#FFC125">
         <td height="40" align="right">&nbsp;</td>
         <td height="40" class="">*标签Tag：</td>
-        <td><input name="UserName" type="text" id="UserName" maxlength="8" datatype="Limit" min="2" max="8" msg=""></td>
+        <td><input name="BugTag" type="text" id="UserName" maxlength="8" datatype="Limit" min="2" max="8" msg=""></td>
         <td></td><td></td>
       </tr>
       <tr>
@@ -93,7 +93,7 @@
       <tr>
         <td height="120" align="right">&nbsp;</td>
         <td height="120" colspan="4" valign="top"><span class="">
-          <textarea name="Advice" cols="80" rows="10" id="Advice" datatype="Limit" min="6" msg="输入内容20个字符以上，谢谢！"></textarea>
+          <textarea name="BugDes" cols="80" rows="10" id="Advice" datatype="Limit" min="6" msg="输入内容20个字符以上，谢谢！"></textarea>
         </span></td>
         </tr>
          <tr bgcolor="#FFC125">
@@ -101,7 +101,7 @@
         <td height="40" colspan="4" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tbody><tr>
               <td width="20%"><span class="">★ </span> <span class="">问题发生时间：</span></td>
-              <td width="83%"><input name="GenTime" type="text" id="GenTime" onfocus="setday(this);" datatype="Date" msg="请输入问题发生的时间">
+              <td width="83%"><input name="BugTime" type="text" id="GenTime" onfocus="setday(this);" datatype="Date" msg="请输入问题发生的时间">
                 <span class="">(示例：2012-12-21 01:23:45)</span></td>
             </tr>
           </tbody></table></td>
@@ -109,14 +109,14 @@
       <tr>
         <td height="40" align="right">&nbsp;</td>
         <td height="40" class="">*联系方式：电话：</td>
-        <td><input name="Mobile" type="text" id="Mobile" datatype="Mobile" msg="请输入规范格式的手机号码"></td>
+        <td><input name="ContactTel" type="text" id="Mobile" datatype="Mobile" msg="请输入规范格式的手机号码"></td>
         <td class="">QQ：</td>
-        <td><input name="GameVer" type="text" id="GameVer" datatype="Limit" min="2" msg=""></td>
+        <td><input name="ContactQQ" type="text" id="GameVer" datatype="Limit" min="2" msg=""></td>
       </tr>
       <tr bgcolor="#FFC125">
         <td height="40" align="right">&nbsp;</td>
         <td height="40" class="">邮箱</td>
-        <td><input name="Mailbox" type="text" id="Mailbox" datatype="Email" msg="请输入邮箱地址"></td>
+        <td><input name="ContactMail" type="text" id="Mailbox" datatype="Email" msg="请输入邮箱地址"></td>
         <td></td><td></td>
       </tr>
       

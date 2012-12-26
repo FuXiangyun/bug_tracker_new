@@ -107,18 +107,18 @@ function tabit(divName,btn){
 
       <section id="comments">
           <h2>注册新用户</h2>
-        <form action="#" method="post" onsubmit="return checkSubmit();">
+        <form action="source/Register.php" method="post" onsubmit="return checkSubmit();">
             <table>
                 <tr><p>用户名<input type="hidden" name="name" value="user">
                     <input type="hidden" name="dopost" value="regok">
-                <input name="userid" type="text" onchange="TestUserOk()"/> * </p>
+                <input name="username" type="text" onchange="TestUserOk()"/> * </p>
                         <p><a href="javascript:TestUserOk();">[检查是否已被占用]</a></p></tr>
-            <tr><p>昵称<input name="uname" type="text"/> *</p></tr>
+            <tr><p>昵称<input name="usernickname" type="text"/> *</p></tr>
             <tr><p>
               邮箱<input name="email" type="text" /> *
           </p></tr>
             <tr><p>
-              密码<input name="userpwd" type="password"/> *
+              密码<input name="password" type="password"/> *
           </p></tr>
             <tr><p>确认密码<input name="userpwdok" type="password" /> *</p></tr>
             <tr><p>验证码&nbsp; <input name="vdcode" type="text"/> 
