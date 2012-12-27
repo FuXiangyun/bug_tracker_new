@@ -19,6 +19,9 @@ $(document).ready(function () {
 });
 </script>
 </head>
+<?php
+$username = $_SESSION['username'];
+?>
 <body>
 <div class="wrapper row1">
   <header id="header" class="clear">
@@ -41,9 +44,9 @@ $(document).ready(function () {
         <li><a href="top-list.html">排行</a></li>
         <li><a href="bug-submit.html">捉虫</a></li>
         <li><a href="#">联系我们</a></li>
-        <li class="last"><a href="#">不知道放什么好</a></li>
-        <li class="end"><a href="login.html">登录</a></li>
-        <li><a href="registe.html">注册</a></li>
+        <!--<li class="last"><a href="#">不知道放什么好</a></li>-->
+        <li class="end"><a href="<?php if($username) echo "个人主页.html"; else echo "login.html";?>"><?php if($username) echo $username; else echo "登录";?></a></li>
+        <li><a href="<?php if($username) echo "source/Logout.php"; else echo "registe.html";?>"><?php if($username) echo "退出登录"; else echo "注册";?></a></li>
       </ul></nav> </header></div>
     
  
