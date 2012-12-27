@@ -1,0 +1,8 @@
+1、增加softwarebug表。用于记录上传bug所属软件信息，其中有BugNum一栏，用于排行榜。
+2、在Userinfo表中增加BugNum，用于用户排行榜。
+3、在bbs_article中增加BugID栏，用于关联BugDetail内容。
+
+
+后续更新：
+1、Userinfo表中的触发器：用户每次提交Bug,会自动将BugNum+1,删除Bug，会自动将BugNum-1。
+2、将softwarebug表中的SoftwareName与BugDetail表中的BugTag建立联系

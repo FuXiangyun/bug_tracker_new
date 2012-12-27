@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-26 09:01:06
+Date: 2012-12-27 15:45:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,9 +48,12 @@ CREATE TABLE `bbs_article` (
   `Sign` text NOT NULL COMMENT '文章简要说明',
   `PostTime` datetime NOT NULL,
   `IsTop` tinyint(4) NOT NULL COMMENT '是否置顶',
+  `BugID` bigint(20) default NULL,
   PRIMARY KEY  (`ArticleID`),
   KEY `FK_Reference_1` (`UserName`),
   KEY `FK_Reference_2` (`BoardId`),
+  KEY `FK_Reference_7` (`BugID`),
+  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
   CONSTRAINT `FK_Reference_1` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
   CONSTRAINT `FK_Reference_2` FOREIGN KEY (`BoardId`) REFERENCES `bbs_board` (`BoardId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='论坛文章数据库';
@@ -85,50 +88,21 @@ CREATE TABLE `bbs_board` (
 DROP TABLE IF EXISTS `bugdetail`;
 CREATE TABLE `bugdetail` (
   `BugID` bigint(20) NOT NULL auto_increment,
-  `BugUploadedTime` datetime default NULL,
-  `UserName` varchar(20) default NULL,
-  `BugPicPath` varchar(150) default NULL,
-  `BugOS` varchar(150) default NULL,
-  `BugProgName` varchar(50) default NULL,
+  `BugUploadedTime` datetime NOT NULL,
+  `UserName` varchar(20) NOT NULL,
+  `BugPicPath` varchar(150) NOT NULL,
+  `BugOS` varchar(150) NOT NULL,
+  `BugProgName` varchar(50) NOT NULL,
   `BugTag` text,
-  `BugName` varchar(50) default NULL,
   `BugDes` text,
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
-INSERT INTO `bugdetail` VALUES ('22', '2012-12-25 21:05:42', 'fuxiangyun', 'filename', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('23', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('24', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('25', null, '傅相云2号', 'BugPicPath', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('26', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('27', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('28', null, 'fuxiangyun', 'BugPicPath', null, null, null, null, null);
-INSERT INTO `bugdetail` VALUES ('29', null, 'fuxiangyun', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('30', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('31', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('33', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', 'BugName');
-INSERT INTO `bugdetail` VALUES ('34', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', 'BugName');
-INSERT INTO `bugdetail` VALUES ('35', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('36', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('37', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('38', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', null, 'BugDes');
-INSERT INTO `bugdetail` VALUES ('39', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('40', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('41', '2012-12-25 13:06:40', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('42', '2012-12-25 13:06:51', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('43', '2012-12-25 13:07:17', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('44', null, '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('45', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('46', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('47', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('48', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('49', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('50', '2012-12-25 13:17:35', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugName', 'BugDes');
 
 -- ----------------------------
 -- Table structure for `in_activity_user`
@@ -148,39 +122,46 @@ CREATE TABLE `in_activity_user` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `softwarebug`
+-- ----------------------------
+DROP TABLE IF EXISTS `softwarebug`;
+CREATE TABLE `softwarebug` (
+  `Sid` bigint(20) NOT NULL auto_increment,
+  `SoftwareName` text,
+  `SoftwareBugNum` bigint(12) default NULL,
+  `SoftwareDescription` text,
+  `SoftwareCompany` text,
+  PRIMARY KEY  (`Sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of softwarebug
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `userinfo`
 -- ----------------------------
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE `userinfo` (
   `UserName` varchar(20) NOT NULL,
-  `NickName` varchar(60) default NULL,
-  `Password` varchar(40) default NULL,
+  `NickName` varchar(60) NOT NULL,
+  `Password` varchar(40) NOT NULL,
   `Email` varchar(255) default NULL,
   `Question` varchar(255) default NULL,
   `Answer` varchar(255) default NULL,
-  `RegTime` date default NULL,
+  `RegTime` datetime default NULL,
+  `LoginTime` datetime default NULL,
+  `LoginTImes` int(11) unsigned default NULL,
   `SignDetail` text COMMENT '用户签名',
   `HavePic` tinyint(4) default NULL,
   `PicName` varchar(255) default NULL,
+  `BugNum` int(11) unsigned default NULL,
   PRIMARY KEY  (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='记录用户信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'nickname', 'password', 'email', 'question', 'answer', '2012-01-01', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('3', 'nickname', 'password', 'email', 'question', 'answer', '2012-01-01', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('5', '1', '1', 'email', 'question', 'answer', '2012-01-01', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('6', '5', '5', null, null, null, '2012-01-01', 'a', null, null);
-INSERT INTO `userinfo` VALUES ('8', '1', '1', 'email', 'question', 'answer', '2012-12-13', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('fuxiangyun', null, 'fuxiangyun', null, null, null, null, null, null, null);
-INSERT INTO `userinfo` VALUES ('fuxiangyun1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `userinfo` VALUES ('test', '', '', null, null, null, null, null, null, null);
-INSERT INTO `userinfo` VALUES ('test2', null, null, null, null, null, null, null, null, null);
-INSERT INTO `userinfo` VALUES ('test3', null, null, null, null, null, null, null, null, null);
-INSERT INTO `userinfo` VALUES ('傅相云', '1', '1', '450306159@qq.com', 'question', 'answer', '2012-12-13', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', '450306159@qq.com', 'question', 'answer', '2012-12-13', 'a', '1', 'picname');
-INSERT INTO `userinfo` VALUES ('神仙', '1', '1', 'email', 'question', 'answer', '2012-01-01', 'a', '1', 'picname');
 
 -- ----------------------------
 -- Procedure structure for `LoginCheck`
