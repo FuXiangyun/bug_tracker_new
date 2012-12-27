@@ -14,7 +14,7 @@ body {
 }
 
 #body-wrapper {
-	background: url('../images/bg-radial-gradient.gif') fixed top
+	background: url('../images/bg-radial-gradient.gif')
 		no-repeat;
 }
 
@@ -61,7 +61,7 @@ h6 {
 }
 
 a {
-	color: #f89406;
+	color: #57a000;
 	text-decoration: none;
 }
 
