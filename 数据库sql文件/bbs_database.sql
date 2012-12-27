@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-27 15:45:12
+Date: 2012-12-27 18:26:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,11 +98,14 @@ CREATE TABLE `bugdetail` (
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
+INSERT INTO `bugdetail` VALUES ('9', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('10', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('11', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
 
 -- ----------------------------
 -- Table structure for `in_activity_user`
@@ -155,13 +158,16 @@ CREATE TABLE `userinfo` (
   `SignDetail` text COMMENT '用户签名',
   `HavePic` tinyint(4) default NULL,
   `PicName` varchar(255) default NULL,
-  `BugNum` int(11) unsigned default NULL,
+  `BugNum` int(11) unsigned default '0',
   PRIMARY KEY  (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='记录用户信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
+INSERT INTO `userinfo` VALUES ('傅相云1号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '2');
+INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '1');
+INSERT INTO `userinfo` VALUES ('神仙', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
 
 -- ----------------------------
 -- Procedure structure for `LoginCheck`
@@ -213,11 +219,27 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `Upload_bug`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text,IN `BugName` varchar(50))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text)
 BEGIN
 	#Routine body goes here...
-	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,BugName)
-	values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,BugName);
+	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes)
+	values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes);
 END
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `t_UserBugNum`;
+DELIMITER ;;
+CREATE TRIGGER `t_UserBugNum` AFTER INSERT ON `bugdetail` FOR EACH ROW begin 
+	set @x = NEW.UserName;
+	update userinfo set userinfo.BugNum = userinfo.BugNum+1 where UserName = @x;
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `t_UserBugNum_Minus`;
+DELIMITER ;;
+CREATE TRIGGER `t_UserBugNum_Minus` AFTER DELETE ON `bugdetail` FOR EACH ROW begin
+	set @x = OLD.UserName;
+	update userinfo set userinfo.BugNum = userinfo.BugNum - 1 where UserName = @x;
+end
 ;;
 DELIMITER ;
