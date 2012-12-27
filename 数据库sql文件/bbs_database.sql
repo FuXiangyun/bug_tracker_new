@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-27 18:26:59
+Date: 2012-12-27 18:31:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -95,6 +95,7 @@ CREATE TABLE `bugdetail` (
   `BugProgName` varchar(50) NOT NULL,
   `BugTag` text,
   `BugDes` text,
+  `BugName` varchar(50) default NULL,
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
@@ -103,9 +104,9 @@ CREATE TABLE `bugdetail` (
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
-INSERT INTO `bugdetail` VALUES ('9', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('10', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
-INSERT INTO `bugdetail` VALUES ('11', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes');
+INSERT INTO `bugdetail` VALUES ('9', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
+INSERT INTO `bugdetail` VALUES ('10', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
+INSERT INTO `bugdetail` VALUES ('11', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
 
 -- ----------------------------
 -- Table structure for `in_activity_user`

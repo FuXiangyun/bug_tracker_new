@@ -86,9 +86,9 @@ class DBO
                 mysql_select_db("bbs_database",$conn) or die ("can't select database");
                //echo "DataBase is OK!";
 
-
+					mysql_query("SET NAMES gb2312");
                     $sql = "call LoginCheck('".$username."','".$password."',"."@result".");";
-                    //echo $sql;
+                    echo $sql;
                     mysql_query($sql);
                     $result = mysql_query('select @result;');
                     $array = mysql_fetch_array($result);
@@ -136,7 +136,7 @@ class DBO
 				return $error_NN_isnull;
 			}
 			mysql_select_db("bbs_database",$conn) or die ("can't select database");
-			mysql_query("SET NAMES UTF8");
+			mysql_query("SET NAMES gb2312");
 			mysql_query($sql);//执行存储过程
 			
 			$result = mysql_query('select @result;');
@@ -160,7 +160,7 @@ class DBO
         {
             $conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
             mysql_select_db("bbs_database",$conn) or die ("can't select database");
-            mysql_query("SET NAMES UTF8");//加上这句
+            mysql_query("SET NAMES gb2312");//加上这句
             $result;
             $BugUploadedTime = date('Y-m-d H:i:s',time());
             //echo $BugUploadedTime;
