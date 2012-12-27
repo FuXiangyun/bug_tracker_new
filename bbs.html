@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>捉虫——The Bug Tracker</title>
+<link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+<script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
+<script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn1").click(function(){
+  $("p").toggle(1000);
+  $("h2").toggle(1000);
+});
+
+});
+</script>
+<link rel="stylesheet" type="text/css" href="styles/slickmenu.css"/>
+<script type="text/javascript" src="scripts/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jslickmenu.js"></script>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <hgroup>
+      <h1><a href="index.html">捉虫</a></h1>
+      <h2>The New Bug Tracker</h2>
+    </hgroup>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Search:</legend>
+        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+        <input type="submit" id="sf_submit" value="提交">
+      </fieldset>
+    </form>
+    <nav class="clear">
+      <ul>
+        <li class="active"><a href="index.html">首页</a></li>
+        <li><a href="activities.html">活动</a></li>
+        <li><a href="bbs.html">讨论</a></li>
+        <li><a href="top-list.html">排行</a></li>
+        <li><a href="bug-submit.html">捉虫</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li class="last"><a href="#">不知道放什么好</a></li>
+        <li class="end"><a href="login.html">登录</a></li>
+        <li><a href="registe.html">注册</a></li>
+      </ul></nav> </header></div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+      <h1>BugTracker论坛</h1>
+      <h2 align="center" style="width: 130px;height: 25px;background-color:#FF9900; font-weight:bold;color: #ffffff">快速链接</h2>
+        <div>
+	<div id="menu">
+		<ul>
+                    <li><a href="#newbbs"><img src="images/item-01.jpg" alt="我要发表新帖" />
+			</a></li>
+			<li><a><img src="images/item-02.jpg" alt="我要去个人主页" />
+			</a></li>
+			<li><a><img src="images/item-03.jpg" alt="我要去看排行榜" />
+			</a></li>
+			<li><a><img src="images/item-04.jpg" alt="我要去参加活动" />
+			</a></li>
+			<li><a><img src="images/item-05.jpg" alt="我要回首页" />
+			</a></li>
+                        <li><a><img src="images/item-01.jpg" alt="我要退出登录" />
+			</a></li>
+		</ul>
+	</div>
+</div>
+      <div><div>
+ <section id="comments">
+        <ul><li class="comment_odd">
+            <article>
+              <header>
+                <address>BugTracker <a href="#">论坛</a>
+                </address>
+              </header>
+              <section>
+                  <h6><small>这里是BugTracker的用户论坛。用户提交成功的交流帖子在这里显示。您可根据页面提示来发表新帖、查看帖子或回复留言等。</small></h6>
+              </section>
+            </article>
+          </li>  </ul></section>  </div><div> 
+          <table border="1"> 
+            <thead>
+              <tr>
+                <th>主题帖子</th>
+                <th>作者</th>
+                <th>回复/查看</th>
+                <th>最后发表</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <!--tr>
+                <td colspan="6">
+                  <div>
+                    <select name="dropdown">
+                      <option value="option1">全部的Bug</option>
+                      <option value="option2">删除的Bug</option>
+                    </select>
+                    <a class="button" href="#">请确认</a> </div>
+                  <div class="pagination" align="right"> <a href="#" title="First Page">&laquo; 首页</a><a href="#" title="Previous Page">&laquo; 前一页</a> <a href="#" class="number" title="1">1</a> <a href="#" class="number" title="2">2</a> <a href="#" class="number current" title="3">3</a> <a href="#" class="number" title="4">4</a> <a href="#" title="Next Page">下一页 &raquo;</a><a href="#" title="Last Page">尾页 &raquo;</a> </div>
+                  <!-- End .pagination>
+                  <div class="clear"></div>
+                </td>
+              </tr-->
+            </tfoot>
+            <tbody align="center">
+              <tr>
+                <td align="left" width="70%"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td width="10%"><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+              <tr>
+                <td align="left"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+              <tr>
+                <td align="left"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+              <tr>
+                <td align="left"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+             <tr>
+                <td align="left"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+              <tr>
+                <td align="left"><a href="#" title="title">周鸿祎我谢谢你！</a></td>
+                <td><a href="#" title="title">360</a></td>
+                <td><a href="#" title="title">20</a></td>
+                <td>2012-12-13</td>
+              </tr>
+            </tbody></table>
+              <div align="right"><input type="submit" align="right" style="border: 0;font-weight: bold;height: 30px;width: 80px;color: #ffffff;background-color:#FF9900" class="btn1" value="编写新帖">
+          </div></div>
+          <div><section id="comments" >
+                  <a name="newbbs"><h2>请在这里边写新帖</h2></a>
+        <form action="#" method="post">
+          <p>
+            <input type="text" name="name" id="name" value="" size="22">
+            <label for="name">新帖的标题(必须填写)</label>
+          </p>
+          <p>
+            <input type="text" name="email" id="email" value="" size="22">
+            <label for="email">作者用户名(必须填写)</label>
+          </p>
+          <p>
+            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
+            <label for="comment" class="hidden">新帖内容(必须填写)</label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="确认提交">
+            &nbsp;
+            <input name="reset" type="reset" id="reset" value="重新编写">
+          </p>
+        </form></section></div>
+          
+  </div>
+  </div></div>
+<div class="wrapper row3">
+  <div id="footer" class="clear">
+    <!-- ########################################################################################## -->
+    <section class="one_quarter">
+      <h2 class="title">From The Blog</h2>
+      <article>
+        <header>
+          <h2>Post Title</h2>
+        </header>
+        <p>写不出来</p>
+        <footer class="more"><a href="#">Read More &raquo;</a></footer>
+      </article>
+    </section>
+    <section class="one_quarter">
+      <h2 class="title">Quick Links</h2>
+      <nav>
+        <ul>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li class="last"><a href="#">随便链接嘛</a></li>
+        </ul>
+      </nav>
+    </section>
+    <section class="two_quarter lastbox">
+      <h2 class="title">About US</h2>
+      <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt="">
+      <p>不知道写啥！！！</p>
+      <footer class="more"><a href="#">Read More &raquo;</a></footer>
+    </section>
+    <!-- ########################################################################################## -->
+  </div>
+</div>
+<!-- Copyright -->
+<div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">The Bug Tracker</a></p>
+  </footer>
+</div>
+
+</body>
+</html>

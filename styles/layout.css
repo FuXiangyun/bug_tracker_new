@@ -112,6 +112,9 @@ blockquote:after, q:after{content:' ?'; font-size:26px; line-height:0;}
 /* ------Content-----*/
 
 #container #content{float:left; width:960px; margin-bottom:0;}
+#denglu{color: #fff;
+                background: #222;
+				}
 
 /* ------Comments-----*/
 
