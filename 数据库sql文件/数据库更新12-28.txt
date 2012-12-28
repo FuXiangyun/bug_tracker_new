@@ -1,0 +1,2 @@
+1、添加upload_bug存储过程。上传bug时，会判断bug的所属程序(bugdetail.BugProgName)是否存在于softwarebug表中，不存在就会创建，然后在相应软件与用户表中将Bug数+1；存在就会直接+1。两种情况都会将bugdetail.Sid（所属软件ID）自动填入。
+2、修改t_UserBugNum_Minus触发器，在减去用户BugNum的同时，减去相应软件的BugNum。

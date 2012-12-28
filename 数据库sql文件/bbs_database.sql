@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-27 18:31:44
+Date: 2012-12-28 18:14:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,9 +53,9 @@ CREATE TABLE `bbs_article` (
   KEY `FK_Reference_1` (`UserName`),
   KEY `FK_Reference_2` (`BoardId`),
   KEY `FK_Reference_7` (`BugID`),
-  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
   CONSTRAINT `FK_Reference_1` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
-  CONSTRAINT `FK_Reference_2` FOREIGN KEY (`BoardId`) REFERENCES `bbs_board` (`BoardId`)
+  CONSTRAINT `FK_Reference_2` FOREIGN KEY (`BoardId`) REFERENCES `bbs_board` (`BoardId`),
+  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='论坛文章数据库';
 
 -- ----------------------------
@@ -92,21 +92,23 @@ CREATE TABLE `bugdetail` (
   `UserName` varchar(20) NOT NULL,
   `BugPicPath` varchar(150) NOT NULL,
   `BugOS` varchar(150) NOT NULL,
-  `BugProgName` varchar(50) NOT NULL,
+  `BugProgName` text NOT NULL,
   `BugTag` text,
   `BugDes` text,
   `BugName` varchar(50) default NULL,
+  `Sid` bigint(20) default NULL COMMENT '软件名',
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
 -- ----------------------------
-INSERT INTO `bugdetail` VALUES ('9', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
-INSERT INTO `bugdetail` VALUES ('10', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
-INSERT INTO `bugdetail` VALUES ('11', '0000-00-00 00:00:00', '傅相云1号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null);
+INSERT INTO `bugdetail` VALUES ('30', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', '360', 'BugTag', 'BugDes', null, '1');
+INSERT INTO `bugdetail` VALUES ('31', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', '360', 'BugTag', 'BugDes', null, '1');
+INSERT INTO `bugdetail` VALUES ('34', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'Oracle', 'BugTag', 'BugDes', null, '2');
+INSERT INTO `bugdetail` VALUES ('35', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'Oracle', 'BugTag', 'BugDes', null, '2');
 
 -- ----------------------------
 -- Table structure for `in_activity_user`
@@ -117,8 +119,8 @@ CREATE TABLE `in_activity_user` (
   `UserName` varchar(20) default NULL,
   PRIMARY KEY  (`act_name`),
   KEY `FK_Reference_6` (`UserName`),
-  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
-  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`act_name`) REFERENCES `bbs_activity` (`act_name`)
+  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`act_name`) REFERENCES `bbs_activity` (`act_name`),
+  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -132,15 +134,17 @@ DROP TABLE IF EXISTS `softwarebug`;
 CREATE TABLE `softwarebug` (
   `Sid` bigint(20) NOT NULL auto_increment,
   `SoftwareName` text,
-  `SoftwareBugNum` bigint(12) default NULL,
+  `SoftwareBugNum` bigint(12) NOT NULL default '0',
   `SoftwareDescription` text,
   `SoftwareCompany` text,
   PRIMARY KEY  (`Sid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of softwarebug
 -- ----------------------------
+INSERT INTO `softwarebug` VALUES ('1', '360', '2', null, null);
+INSERT INTO `softwarebug` VALUES ('2', 'Oracle', '2', null, null);
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -166,8 +170,9 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('傅相云1号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '2');
-INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '1');
+INSERT INTO `userinfo` VALUES ('', '1', '1', '450306159@qq.com', 'question', 'answer', '2012-12-27 00:00:00', null, null, 'a', '1', 'picname', '0');
+INSERT INTO `userinfo` VALUES ('傅相云1号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
+INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '4');
 INSERT INTO `userinfo` VALUES ('神仙', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
 
 -- ----------------------------
@@ -223,16 +228,27 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text)
 BEGIN
 	#Routine body goes here...
-	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes)
-	values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes);
+	declare t_name text;
+	declare t_sid bigint;
+
+	SELECT softwarebug.SoftwareName,softwarebug.Sid into t_name,t_sid from softwarebug where softwarebug.SoftwareName = BugProgName;#查询是否已经存在此软件
+	if t_name is null THEN#softwarebug表中不存在此软件，添加此软件，并+1
+		insert into softwarebug (SoftwareName,SoftwareBugNum) VALUES (BugProgName,0);#添加软件
+		select LAST_INSERT_ID() into t_sid;	
+		#update 
+	ELSE#softwarebug表中已存在此软件，将此软件的Bug数+1
+		update softwarebug set softwarebug.SoftwareBugNum = softwarebug.SoftwareBugNum+1 where Sid = t_sid;#将软件对应的Bug数+1
+	end if;
+	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,Sid)
+		values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,t_sid);#将Bug插入BugDetail
 END
 ;;
 DELIMITER ;
 DROP TRIGGER IF EXISTS `t_UserBugNum`;
 DELIMITER ;;
 CREATE TRIGGER `t_UserBugNum` AFTER INSERT ON `bugdetail` FOR EACH ROW begin 
-	set @x = NEW.UserName;
-	update userinfo set userinfo.BugNum = userinfo.BugNum+1 where UserName = @x;
+	set @username_ = NEW.UserName;
+	update userinfo set userinfo.BugNum = userinfo.BugNum+1 where UserName = @username_;#用户提交Bug数加1
 end
 ;;
 DELIMITER ;
@@ -240,7 +256,9 @@ DROP TRIGGER IF EXISTS `t_UserBugNum_Minus`;
 DELIMITER ;;
 CREATE TRIGGER `t_UserBugNum_Minus` AFTER DELETE ON `bugdetail` FOR EACH ROW begin
 	set @x = OLD.UserName;
+	set @t_sid = OLD.Sid;
 	update userinfo set userinfo.BugNum = userinfo.BugNum - 1 where UserName = @x;
+	update softwarebug set SoftwareBugNum = SoftwareBugNum - 1 where Sid = @t_sid;
 end
 ;;
 DELIMITER ;
