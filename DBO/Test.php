@@ -25,9 +25,9 @@ echo DBO::LoginCheck("∏µœ‡‘∆2∫≈","1");
 
 
 echo "</br>".section2."</br>";
-echo DBO::upload_bug("∏µœ‡‘∆2∫≈" ,"BugPicPath", "BugOS", "BugProgName", "BugTag", "BugDes","BugName");
+//echo DBO::upload_bug("∏µœ‡‘∆2∫≈" ,"BugPicPath", "BugOS", "BugProgName", "BugTag", "BugDes","BugName");
 echo DBO::register('∏µœ‡‘∆2∫≈','1','1','450306159@qq.com','question','answer','a','1','picname');
-
+echo DBO::upload_reply('∏µœ‡‘∆1∫≈','detail',30);
 
 ?>
 

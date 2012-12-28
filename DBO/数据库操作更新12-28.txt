@@ -1,1 +1,8 @@
 1、Upload_bug返回值有更改
+函数名：upload_bug($UserName,$BugPicPath,$BugOS,$BugProgName,$BugTag,$BugDes,$BugName)
+返回值：成功返回1，不成功返回-1
+
+
+2、增加upload_reply提交回复操作封装
+函数名：upload_reply($UserName,$ReplyDetail,$BugID)
+返回值：成功返回1，不成功返回-1

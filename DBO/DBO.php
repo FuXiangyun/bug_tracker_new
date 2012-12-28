@@ -181,5 +181,26 @@ class DBO
             //return $array[0];
         }
                 
+		//提交回复的封装操作		
+		//成功返回1，不成功返回-1		
+		public static function upload_reply($UserName,$ReplyDetail,$BugID)
+		{
+			$conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
+			mysql_select_db("bbs_database",$conn) or die ("can't select database");
+            mysql_query("SET NAMES gb2312");//加上这句
+			$ReplyTime = date('Y-m-d H:i:s',time());
+			$result;
+			$sql = "insert into reply (UserName,ReplyTime,ReplyDetail,BugID) VALUES ('$UserName','$ReplyTime','$ReplyDetail',$BugID);";
+			//echo $sql;
+			if(mysql_query($sql))
+			{
+				$result = 1;
+			}
+			else
+			{
+			    $result = -1;
+			}
+			return $result;
+		}	
 }
 ?>
