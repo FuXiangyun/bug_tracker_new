@@ -148,13 +148,13 @@ $(document).ready(function(){
           </div></div>
           <div><section id="comments" >
                   <a name="newbbs"><h2>请在这里边写新帖</h2></a>
-        <form action="#" method="post">
+        <form action="source/Article_submit.php" method="post">
           <p>
             <input type="text" name="name" id="name" value="" size="22">
             <label for="name">新帖的标题(必须填写)</label>
           </p>
           <p>
-            <input type="text" name="email" id="email" value="" size="22">
+            <input type="text" name="username" id="email" value="<?php if($username) echo $username; else echo ""?>" size="22">
             <label for="email">作者用户名(必须填写)</label>
           </p>
           <p>

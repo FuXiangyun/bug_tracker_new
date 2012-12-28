@@ -7,7 +7,7 @@ $password = $_POST['password'];
 DBO::InitDB();
 $result = DBO::LoginCheck($username,$password);
 
-if($result == "ok")
+if($result == "正确")
   {
     echo "correct";
     session_start();
@@ -15,7 +15,7 @@ if($result == "ok")
     echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../index.html;\">";
     exit();
   }
-else if($result == "password wrong" || $result == "username wrong")
+else if($result == "密码错误" || $result == "用户不存在")
   {
     echo "wrong";
     echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../login.html;\">";
