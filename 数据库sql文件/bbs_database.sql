@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-28 19:49:59
+Date: 2012-12-28 19:58:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -138,6 +138,27 @@ CREATE TABLE `in_activity_user` (
 
 -- ----------------------------
 -- Records of in_activity_user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `reply`
+-- ----------------------------
+DROP TABLE IF EXISTS `reply`;
+CREATE TABLE `reply` (
+  `Rid` bigint(20) NOT NULL auto_increment,
+  `UserName` varchar(20) default NULL,
+  `ReplyTime` datetime default NULL,
+  `ReplyDetail` text,
+  `BugID` bigint(20) default NULL,
+  PRIMARY KEY  (`Rid`),
+  KEY `FK_Reference_8` (`UserName`),
+  KEY `FK_Reference_9` (`BugID`),
+  CONSTRAINT `FK_Reference_9` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
+  CONSTRAINT `FK_Reference_8` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of reply
 -- ----------------------------
 
 -- ----------------------------
