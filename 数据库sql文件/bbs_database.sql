@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-28 19:58:21
+Date: 2012-12-28 20:32:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -155,11 +155,16 @@ CREATE TABLE `reply` (
   KEY `FK_Reference_9` (`BugID`),
   CONSTRAINT `FK_Reference_9` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
   CONSTRAINT `FK_Reference_8` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reply
 -- ----------------------------
+INSERT INTO `reply` VALUES ('1', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
+INSERT INTO `reply` VALUES ('2', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
+INSERT INTO `reply` VALUES ('3', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
+INSERT INTO `reply` VALUES ('4', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
+INSERT INTO `reply` VALUES ('5', '傅相云1号', '2012-12-28 12:14:41', 'detail', '30');
 
 -- ----------------------------
 -- Table structure for `softwarebug`
@@ -171,15 +176,16 @@ CREATE TABLE `softwarebug` (
   `SoftwareBugNum` bigint(12) NOT NULL default '0',
   `SoftwareDescription` text,
   `SoftwareCompany` text,
+  `SoftwarePicPath` varchar(128) default NULL,
   PRIMARY KEY  (`Sid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of softwarebug
 -- ----------------------------
-INSERT INTO `softwarebug` VALUES ('1', '360', '3', null, null);
-INSERT INTO `softwarebug` VALUES ('2', 'Oracle', '2', null, null);
-INSERT INTO `softwarebug` VALUES ('3', 'BugProgName', '12', null, null);
+INSERT INTO `softwarebug` VALUES ('1', '360', '3', null, null, null);
+INSERT INTO `softwarebug` VALUES ('2', 'Oracle', '2', null, null, null);
+INSERT INTO `softwarebug` VALUES ('3', 'BugProgName', '12', null, null, null);
 
 -- ----------------------------
 -- Table structure for `userinfo`
