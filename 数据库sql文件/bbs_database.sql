@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-28 18:14:42
+Date: 2012-12-28 19:49:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -100,7 +100,7 @@ CREATE TABLE `bugdetail` (
   PRIMARY KEY  (`BugID`),
   KEY `FK_Reference_4` (`UserName`),
   CONSTRAINT `FK_Reference_4` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bugdetail
@@ -109,6 +109,19 @@ INSERT INTO `bugdetail` VALUES ('30', '0000-00-00 00:00:00', '傅相云2号', 'B
 INSERT INTO `bugdetail` VALUES ('31', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', '360', 'BugTag', 'BugDes', null, '1');
 INSERT INTO `bugdetail` VALUES ('34', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'Oracle', 'BugTag', 'BugDes', null, '2');
 INSERT INTO `bugdetail` VALUES ('35', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'Oracle', 'BugTag', 'BugDes', null, '2');
+INSERT INTO `bugdetail` VALUES ('38', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('39', '0000-00-00 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('40', '2012-12-28 11:42:15', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('41', '2012-01-01 00:00:00', '傅相云2号', 'BugPicPath', 'BugOS', '360', 'BugTag', 'BugDes', null, '1');
+INSERT INTO `bugdetail` VALUES ('45', '2012-12-28 11:44:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('46', '2012-12-28 11:44:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('47', '2012-12-28 11:44:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('48', '2012-12-28 11:44:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('49', '2012-12-28 11:44:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('50', '2012-12-28 11:48:02', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('51', '2012-12-28 11:48:44', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('52', '2012-12-28 11:49:04', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
+INSERT INTO `bugdetail` VALUES ('53', '2012-12-28 11:49:32', '傅相云2号', 'BugPicPath', 'BugOS', 'BugProgName', 'BugTag', 'BugDes', null, '3');
 
 -- ----------------------------
 -- Table structure for `in_activity_user`
@@ -138,13 +151,14 @@ CREATE TABLE `softwarebug` (
   `SoftwareDescription` text,
   `SoftwareCompany` text,
   PRIMARY KEY  (`Sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of softwarebug
 -- ----------------------------
-INSERT INTO `softwarebug` VALUES ('1', '360', '2', null, null);
+INSERT INTO `softwarebug` VALUES ('1', '360', '3', null, null);
 INSERT INTO `softwarebug` VALUES ('2', 'Oracle', '2', null, null);
+INSERT INTO `softwarebug` VALUES ('3', 'BugProgName', '12', null, null);
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -172,7 +186,7 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 INSERT INTO `userinfo` VALUES ('', '1', '1', '450306159@qq.com', 'question', 'answer', '2012-12-27 00:00:00', null, null, 'a', '1', 'picname', '0');
 INSERT INTO `userinfo` VALUES ('傅相云1号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
-INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '4');
+INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '17');
 INSERT INTO `userinfo` VALUES ('神仙', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
 
 -- ----------------------------
@@ -225,22 +239,28 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `Upload_bug`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Upload_bug`(IN `UserName` varchar(20),IN `BugPicPath` varchar(150),IN `BugOS` varchar(150),IN `BugProgName` varchar(50),IN `BugTag` text,IN `BugDes` text,IN `BugUploadedTime` datetime)
 BEGIN
 	#Routine body goes here...
 	declare t_name text;
 	declare t_sid bigint;
 
-	SELECT softwarebug.SoftwareName,softwarebug.Sid into t_name,t_sid from softwarebug where softwarebug.SoftwareName = BugProgName;#查询是否已经存在此软件
-	if t_name is null THEN#softwarebug表中不存在此软件，添加此软件，并+1
-		insert into softwarebug (SoftwareName,SoftwareBugNum) VALUES (BugProgName,0);#添加软件
+	SELECT softwarebug.SoftwareName,softwarebug.Sid into t_name,t_sid from softwarebug where softwarebug.SoftwareName = BugProgName;
+	#查询是否已经存在此软件
+	if t_name is null THEN
+		#softwarebug表中不存在此软件，添加此软件，并+1
+		insert into softwarebug (SoftwareName,SoftwareBugNum) VALUES (BugProgName,0);
+		#添加软件
 		select LAST_INSERT_ID() into t_sid;	
 		#update 
-	ELSE#softwarebug表中已存在此软件，将此软件的Bug数+1
-		update softwarebug set softwarebug.SoftwareBugNum = softwarebug.SoftwareBugNum+1 where Sid = t_sid;#将软件对应的Bug数+1
+	ELSE
+	#softwarebug表中已存在此软件，将此软件的Bug数+1
+		update softwarebug set softwarebug.SoftwareBugNum = softwarebug.SoftwareBugNum+1 where Sid = t_sid;
+	#将软件对应的Bug数+1
 	end if;
-	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,Sid)
-		values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,t_sid);#将Bug插入BugDetail
+	INSERT INTO bugdetail (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,Sid,BugUploadedTime)
+		values (UserName,BugPicPath,BugOS,BugProgName,BugTag,BugDes,t_sid,BugUploadedTime);
+	#将Bug插入BugDetail
 END
 ;;
 DELIMITER ;

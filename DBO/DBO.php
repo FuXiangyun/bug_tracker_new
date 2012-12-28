@@ -88,7 +88,7 @@ class DBO
 
 					mysql_query("SET NAMES gb2312");
                     $sql = "call LoginCheck('".$username."','".$password."',"."@result".");";
-                    echo $sql;
+                    //echo $sql;
                     mysql_query($sql);
                     $result = mysql_query('select @result;');
                     $array = mysql_fetch_array($result);
@@ -155,7 +155,7 @@ class DBO
 		}
                 
         //提交Bug的操作封装
-        //返回值：插入成功返回BugID，不成功返回-1
+        //返回值：插入成功返回1，不成功返回-1
         public static function upload_bug($UserName,$BugPicPath,$BugOS,$BugProgName,$BugTag,$BugDes,$BugName)
         {
             $conn = mysql_connect(self::$dbserver,self::$dbuser,self::$dbpassword);
@@ -163,11 +163,13 @@ class DBO
             mysql_query("SET NAMES gb2312");//加上这句
             $result;
             $BugUploadedTime = date('Y-m-d H:i:s',time());
+			
+			 $sql = "call Upload_bug('".$UserName."','".$BugPicPath."','".$BugOS."','".$BugProgName."','".$BugTag."','".$$BugDes."','".$BugUploadedTime."');";
+			// echo $sql;
             //echo $BugUploadedTime;
-            if(mysql_query("INSERT INTO `bugdetail` (`UserName`,`BugPicPath`,`BugOS`,`BugProgName`,`BugTag`,`BugDes`,`BugName`,`BugUploadedTime`) 
-                VALUES ('$UserName','$BugPicPath','$BugOS','$BugProgName','$BugTag','$BugDes','$BugName','$BugUploadedTime')"))
+            if(mysql_query($sql))
             {
-                $result = mysql_insert_id();
+                $result = 1;
             }
             else
             {
