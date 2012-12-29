@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-28 20:32:01
+Date: 2012-12-29 19:54:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,26 +36,20 @@ CREATE TABLE `bbs_activity` (
 -- ----------------------------
 DROP TABLE IF EXISTS `bbs_article`;
 CREATE TABLE `bbs_article` (
-  `ArticleID` bigint(20) NOT NULL COMMENT '文章ID',
-  `BoardId` bigint(20) NOT NULL COMMENT '版区ID',
-  `BoardName` varchar(60) NOT NULL COMMENT '版区名字',
+  `ArticleID` bigint(20) NOT NULL auto_increment COMMENT '文章ID',
   `ReNum` int(11) NOT NULL COMMENT '回复数量',
   `ClickNum` int(11) NOT NULL COMMENT '文章点击数',
   `UserName` varchar(20) NOT NULL,
-  `NickName` varchar(60) NOT NULL,
   `Title` varchar(150) NOT NULL,
   `Detail` text NOT NULL COMMENT '文章内容',
-  `Sign` text NOT NULL COMMENT '文章简要说明',
   `PostTime` datetime NOT NULL,
   `IsTop` tinyint(4) NOT NULL COMMENT '是否置顶',
   `BugID` bigint(20) default NULL,
   PRIMARY KEY  (`ArticleID`),
   KEY `FK_Reference_1` (`UserName`),
-  KEY `FK_Reference_2` (`BoardId`),
   KEY `FK_Reference_7` (`BugID`),
-  CONSTRAINT `FK_Reference_1` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
-  CONSTRAINT `FK_Reference_2` FOREIGN KEY (`BoardId`) REFERENCES `bbs_board` (`BoardId`),
-  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`)
+  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
+  CONSTRAINT `FK_Reference_1` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='论坛文章数据库';
 
 -- ----------------------------
@@ -147,24 +141,19 @@ DROP TABLE IF EXISTS `reply`;
 CREATE TABLE `reply` (
   `Rid` bigint(20) NOT NULL auto_increment,
   `UserName` varchar(20) default NULL,
+  `ArticleID` bigint(20) default NULL COMMENT '文章ID',
   `ReplyTime` datetime default NULL,
   `ReplyDetail` text,
-  `BugID` bigint(20) default NULL,
   PRIMARY KEY  (`Rid`),
   KEY `FK_Reference_8` (`UserName`),
-  KEY `FK_Reference_9` (`BugID`),
-  CONSTRAINT `FK_Reference_9` FOREIGN KEY (`BugID`) REFERENCES `bugdetail` (`BugID`),
+  KEY `FK_Reference_9` (`ArticleID`),
+  CONSTRAINT `FK_Reference_9` FOREIGN KEY (`ArticleID`) REFERENCES `bbs_article` (`ArticleID`),
   CONSTRAINT `FK_Reference_8` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reply
 -- ----------------------------
-INSERT INTO `reply` VALUES ('1', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
-INSERT INTO `reply` VALUES ('2', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
-INSERT INTO `reply` VALUES ('3', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
-INSERT INTO `reply` VALUES ('4', '傅相云1号', '0001-01-01 01:00:00', 'detail', '30');
-INSERT INTO `reply` VALUES ('5', '傅相云1号', '2012-12-28 12:14:41', 'detail', '30');
 
 -- ----------------------------
 -- Table structure for `softwarebug`
@@ -212,6 +201,7 @@ CREATE TABLE `userinfo` (
 -- Records of userinfo
 -- ----------------------------
 INSERT INTO `userinfo` VALUES ('', '1', '1', '450306159@qq.com', 'question', 'answer', '2012-12-27 00:00:00', null, null, 'a', '1', 'picname', '0');
+INSERT INTO `userinfo` VALUES ('1', '1', '1', null, null, null, null, null, null, null, null, null, '0');
 INSERT INTO `userinfo` VALUES ('傅相云1号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
 INSERT INTO `userinfo` VALUES ('傅相云2号', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '17');
 INSERT INTO `userinfo` VALUES ('神仙', '1', '1', 'email', 'question', 'answer', '2012-01-01 00:00:00', null, null, 'a', '1', 'picname', '0');
