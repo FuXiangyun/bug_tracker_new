@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-12-29 19:54:38
+Date: 2012-12-30 20:39:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,11 +20,13 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `bbs_activity`;
 CREATE TABLE `bbs_activity` (
-  `act_name` varchar(50) NOT NULL,
+  `act_name` varchar(50) default NULL,
   `act_detail` text,
   `begin_time` datetime default NULL,
   `end_time` datetime default NULL,
-  PRIMARY KEY  (`act_name`)
+  `actid` bigint(20) NOT NULL,
+  `actpicpath` text,
+  PRIMARY KEY  (`actid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -54,26 +56,6 @@ CREATE TABLE `bbs_article` (
 
 -- ----------------------------
 -- Records of bbs_article
--- ----------------------------
-
--- ----------------------------
--- Table structure for `bbs_board`
--- ----------------------------
-DROP TABLE IF EXISTS `bbs_board`;
-CREATE TABLE `bbs_board` (
-  `BoardId` bigint(20) NOT NULL,
-  `ParentBoardId` bigint(20) default NULL COMMENT '为空表示父板块',
-  `BoardName` varchar(20) NOT NULL COMMENT '论坛名字',
-  `BriefExplain` text NOT NULL COMMENT '简短描述',
-  `ArticleNum` int(11) NOT NULL COMMENT '文章数量',
-  `UserName` varchar(20) NOT NULL,
-  PRIMARY KEY  (`BoardId`),
-  KEY `FK_Reference_3` (`UserName`),
-  CONSTRAINT `FK_Reference_3` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='论坛版区表';
-
--- ----------------------------
--- Records of bbs_board
 -- ----------------------------
 
 -- ----------------------------
@@ -122,12 +104,12 @@ INSERT INTO `bugdetail` VALUES ('53', '2012-12-28 11:49:32', '傅相云2号', 'B
 -- ----------------------------
 DROP TABLE IF EXISTS `in_activity_user`;
 CREATE TABLE `in_activity_user` (
-  `act_name` varchar(50) NOT NULL,
+  `actid` bigint(20) NOT NULL,
   `UserName` varchar(20) default NULL,
-  PRIMARY KEY  (`act_name`),
+  PRIMARY KEY  (`actid`),
   KEY `FK_Reference_6` (`UserName`),
-  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`act_name`) REFERENCES `bbs_activity` (`act_name`),
-  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`)
+  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`UserName`) REFERENCES `userinfo` (`UserName`),
+  CONSTRAINT `FK_Reference_10` FOREIGN KEY (`actid`) REFERENCES `bbs_activity` (`actid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
