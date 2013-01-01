@@ -85,7 +85,8 @@
             if($page==null)
             $page=1;
             if($username1==null)
-                $username1=$username;
+            $username1=$username;
+            
             require 'source/Bug.php';
             $dbhost = 'localhost';   
             $dbuser = 'root';  
@@ -105,17 +106,19 @@
                     <p>Bug的详细信息：<br/><strong></strong>详细的ZZZZZZZZZ<br/></p>
                 </div>
                 <div id="messages2" style="display: none">
-                    <h3 style="color:  #FF9900">Bug的名称</h3>
-                    <p>Bug的名称:  <strong><input size="20" value="XXXX"></input></strong>
-                        <p>Bug所在的软件：<strong><input size="20" value="XXXX"></input></strong></p>
-                        <p>Bug所在的系统: <strong><select name="dropdown" class="small-input">
-                                    <option value="option1">Windows</option>
-                                    <option value="option2">Linux</option>
-                                    <option value="option3">IOS</option>
-                                    <option value="option4">Android</option>
-                                </select></strong></p>
-                        <p>Bug的详细信息：<strong><textarea class="textarea" name="textfield" size="100"cols="109" rows="3">XXXXXX</textarea></strong><br/></p>
-                        <input class="button" type="submit" value="保存修改" />
+                    <form action="bbs.html" methos="PSOT">
+                        <h3 style="color:  #FF9900">Bug的名称</h3>
+                        <p>Bug的名称:  <strong><input size="20" value="XXXX"></input></strong>
+                            <p>Bug所在的软件：<strong><input size="20" value="XXXX"></input></strong></p>
+                            <p>Bug所在的系统: <strong><select name="dropdown" class="small-input">
+                                        <option value="option1">Windows</option>
+                                        <option value="option2">Linux</option>
+                                        <option value="option3">IOS</option>
+                                        <option value="option4">Android</option>
+                                    </select></strong></p>
+                            <p>Bug的详细信息：<strong><textarea class="textarea" name="textfield" size="100"cols="109" rows="3">XXXXXX</textarea></strong><br/></p>
+                            <input class="button" type="submit" value="保存修改" />
+                    </form>
                 </div>
                 <ul class="shortcut-buttons-set">
                     <li><a class="shortcut-button" href="subbug.html"><span> <img src="resources/images/icons/pencil_48.png" alt="icon" /><br />
@@ -133,7 +136,7 @@
                 <div class="clear"></div>
                 <!-- End .clear -->
                 <div class="content-box">
-                   <h2><?php echo $username1?> 的主页</h2>
+                    <h2><?php echo $username1;?> 的主页</h2>
                     <!-- Start Content Box -->
                     <div class="content-box-header">
                         <h3>Bug box</h3>
@@ -196,14 +199,17 @@
                                     if($path==null)
                                     echo "<td> 无可下载附件</td>";
                                     else
-                                     echo "<td> <a href=\"source/download.php?bugid=$id\" title=\"title\">下载附件</td>";
+                                    echo "<td> <a href=\"source/download.php?bugid=$id\" title=\"title\">下载附件</td>";
                                     echo "
                                     <td>$time</td>
                                     <td>
-                                    <!-- Icons -->
 
-                                    <a href='$idd' rel=\"modal\" title=\"Check\"><img src=\"resources/images/icons/pencil.png\" alt=\"Check\" /></a> 
-                                    <a href=\"$iddd\" rel=\"modal\" title=\"Edit\"><img src=\"resources/images/icons/hammer_screwdriver.png\" alt=\"Edit\"/></a><a href=\"source/deletebug.php?bugid=$id\" title=\"Delete\"><img src=\"resources/images/icons/cross.png\" alt=\"Delete\" /></a> </td>
+
+                                    <a href='$idd' rel=\"modal\" title=\"Check\"><img src=\"resources/images/icons/pencil.png\" alt=\"Check\" /></a> ";
+                                    if($username1===$_SESSION['UserName'])
+                                   echo "<a href=\"resources/scripts/test.html?temp=$id\" rel=\"modal\" title=\"Edit\"><img src=\"resources/images/icons/hammer_screwdriver.png\" alt=\"Edit\"/></a>
+                                    <a href=\"source/deletebug.php?bugid=$id\" title=\"Delete\"><img src=\"resources/images/icons/cross.png\" alt=\"Delete\" /></a>";
+                                    echo"</td>
                                     </tr>";
                                     echo "<div id=\"$id\" style=\"display: none\">
                                     <h3 style=\"color:  #FF9900\">$name</h3>
@@ -213,12 +219,10 @@
                                     <p>Bug的详细信息：<br/><strong></strong>$detail<br/></p>
                                     </div>";
                                     echo "
-                                    <form action=\"source/updatebug.php?bugid=$id\" method=\"POST\">
                                     <div id=\"$idddd\" style=\"display: none\">
+                                    <form method=\"POST\"  action='source/updatebug.php?bugid=$id'>
                                     <h3 style=\"color:  #FF9900\">Bug的名称</h3>
-                                    
                                     <p>Bug的名称:  <strong><input size=\"20\" name=\"name\" value=\"$name\"></input></strong>
-                                    
                                     <p>Bug所在的软件：<strong><input size=\"20\" name=\"soft\" value=\"$software\"></input></strong></p>
                                     <p>Bug的标签:  <strong><input size=\"20\" name=\"tag\" value=\"$tag\"></input></strong>
                                     <p>Bug所在的系统: <strong><select name=\"dropdown\" class=\"small-input\">
@@ -228,9 +232,8 @@
                                     <option value=\"option4\">Android</option>
                                     </select></strong></p>
                                     <p>Bug的详细信息：<strong><textarea class=\"textarea\" name=\"textfield\" size=\"100\"cols=\"109\" rows=\"3\">$detail</textarea></strong><br/></p>
-                                    <input class=\"button\" type=\"submit\" value=\"保存修改\" />
-                                    </div>
-                                    </form>";
+                                    <input class='button' type='submit' value='保存修改' />   
+                                    </form></div>";
                                     }
                                     $bugs->close();
                                     ?>

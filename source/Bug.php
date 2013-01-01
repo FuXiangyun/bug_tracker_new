@@ -96,9 +96,9 @@ class Bug {
         }
     }
 
-    function updatebug($id, $bugos, $bugproname, $bugtag, $bugdes, $bugname) {
+    function updatebug($id, $bugos, $bugproname, $bugtag, $bugdes, $bugname,$path) {
         mysql_select_db("bbs_database", $this->conn);
-        $sql = "UPDATE bugdetail SET BugOS='$bugos',BugProgname='$bugproname',BugTag='$bugtag',BugDes='$bugdes',BugName='$bugname' WHERE BugID='$id'";
+        $sql = "UPDATE bugdetail SET BugOS='$bugos',BugPicPath='$path',BugProgname='$bugproname',BugTag='$bugtag',BugDes='$bugdes',BugName='$bugname' WHERE BugID='$id'";
         $check = mysql_query($sql, $this->conn);
         if (!$check) {
             die('Could not get data: ');

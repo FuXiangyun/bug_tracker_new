@@ -48,10 +48,10 @@
                     <h1><a href="index.html">捉虫</a></h1>
                     <h2>The New Bug Tracker</h2>
                 </hgroup>
-                <form action="source/Search.php" method="post">
+                <form action="#" method="post">
                     <fieldset>
                         <legend>Search:</legend>
-                        <input name="searchbar" type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+                        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
                         <input type="submit" id="sf_submit" value="提交">
                     </fieldset>
                 </form>
@@ -168,7 +168,7 @@
                                 $id=$row["ArticleID"];
                                 echo "<tr>
                                 <td align='left' width='70%'><a href='source/cache.php?articleid=$id&bugid=$bugid' title='title'>[置顶]$title</a></td>
-                                <td width='10%'><a href='#' title='title'>$username</a></td>
+                                <td width='10%'><a href='person.html?username=$username' title='title'>$username</a></td>
                                 <td><title='title'>$renum/$clicknum</a></td>
                                 <td>$date</td>
                                 </tr>";
@@ -184,7 +184,7 @@
                                 $id=$row2["ArticleID"];
                                 echo "<tr>
                                 <td align='left' width='70%'><a href='source/cache.php?articleid=$id&bugid=$bugid' title='title'>$title2</a></td>
-                                <td width='10%'><a href='#' title='title'>$username2</a></td>
+                                <td width='10%'><a href='person.html?username=$username2' title='title'>$username2</a></td>
                                 <td><title='title'>$renum2/$clicknum2</a></td>
                                 <td>$date2</td>
                                 </tr>";

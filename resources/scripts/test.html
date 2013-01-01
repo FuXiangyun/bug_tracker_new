@@ -1,0 +1,40 @@
+<?php $id=$_GET['temp'];
+require"../../source/Bug.php";
+
+$dbhost = 'localhost';   
+$dbuser = 'root';  
+$dbpass = '1234';  
+$bugs=new Bug();
+$bugs->Init($dbhost, $dbuser, $dbpass);
+$bugs->getbugbyid($id);
+$bugs->close();
+$row=  mysql_fetch_array($bugs->retval4);
+$name="".$row["BugName"];
+$time="".$row["BugUploadedTime"];
+$path="".$row["BugPicPath"];
+$software="".$row["BugProgName"];
+$tag="".$row["BugTag"];
+$detail="".$row["BugDes"];
+$os="".$row["BugOS"];
+$username="".$row["UserName"];
+$id=$row["BugID"];
+echo "<form method='POST'  action='source/updatebug.php?bugid=$id' enctype='multipart/form-data'>";
+?>
+
+<h3 style="color:  #FF9900">Bug的名称</h3>
+
+<p>Bug的名称:  <strong><input size="20" name="name" value=<?php echo $name;?>></input></strong>
+
+<p>Bug所在的软件：<strong><input size="20" name="soft" value=<?php echo $software;?>></input></strong></p>
+<p>Bug的标签:  <strong><input size="20" name="tag" value=<?php echo $tag;?>></input></strong>
+<p>Bug所在的系统: <strong><select name="dropdown" class="small-input">
+            <option value="option1">Windows</option>
+            <option value="option2">Linux</option>
+            <option value="option3">IOS</option>
+            <option value="option4">Android</option>
+        </select></strong></p>
+<p>Bug的详细信息：<strong><textarea class="textarea" name="textfield" size="100"cols="109" rows="3"><?php echo $detail;?></textarea></strong><br/></p>
+<span for="author" style="font-size: 13px;font-weight: bold;color:  #333333">上传附件:</span>
+<input type="file" name="file4" id="file4" onchange="preview4()" />
+<input class='button' type='submit' value='保存修改' />
+</form>
