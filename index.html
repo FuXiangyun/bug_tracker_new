@@ -1,57 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>捉虫——The Bug Tracker</title>
-<link rel="stylesheet" href="styles/layout.css" type="text/css"/>
-<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
-<script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
-<script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-    $("#slider").easySlider({
-        auto: true,
-        continuous: true,
-        numeric: true,
-        speed: 1200,
-        pause: 5000 // slide speed><
-    });
-});
-</script>
-</head>
-<?php
-$username = $_SESSION['username'];
-?>
-<body>
-<div class="wrapper row1">
-  <header id="header" class="clear">
-    <hgroup>
-      <h1><a href="index.html">捉虫</a></h1>
-      <h2>The New Bug Tracker</h2>
-    </hgroup>
-    <form action="#" method="post">
-      <fieldset>
-        <legend>Search:</legend>
-        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="提交">
-      </fieldset>
-    </form>
-    <nav class="clear">
-      <ul>
-        <li class="active"><a href="index.html">首页</a></li>
-        <li><a href="activities.html">活动</a></li>
-        <li><a href="bbs.html">讨论</a></li>
-        <li><a href="top-list.html">排行</a></li>
-        <li><a href="bug-submit.html">捉虫</a></li>
-        <li><a href="#">联系我们</a></li>
-        <!--<li class="last"><a href="#">不知道放什么好</a></li>-->
-        <li class="end"><a href="<?php if($username) echo "个人主页.html"; else echo "login.html";?>"><?php if($username) echo $username; else echo "登录";?></a></li>
-        <li><a href="<?php if($username) echo "source/Logout.php"; else echo "registe.html";?>"><?php if($username) echo "退出登录"; else echo "注册";?></a></li>
-      </ul></nav> </header></div>
-    
- 
-<!-- content -->
-<div class="wrapper row2">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>捉虫——The Bug Tracker</title>
+        <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+        <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+        <script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
+        <script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#slider").easySlider({
+                    auto: true,
+                    continuous: true,
+                    numeric: true,
+                    speed: 1200,
+                    pause: 5000 // slide speed><
+                });
+            });
+        </script>
+    </head>
+    <?php
+    session_start();
+    $username = $_SESSION['UserName'];
+    ?>
+    <body>
+        <div class="wrapper row1">
+            <header id="header" class="clear">
+                <hgroup>
+                    <h1><a href="index.html">捉虫</a></h1>
+                    <h2>The New Bug Tracker</h2>
+                </hgroup>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Search:</legend>
+                        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+                        <input type="submit" id="sf_submit" value="提交">
+                    </fieldset>
+                </form>
+                <nav class="clear">
+                    <ul>
+                        <li class="active"><a href="index.html">首页</a></li>
+                        <li><a href="activities.html">活动</a></li>
+                        <li><a href="bbs.html?pagenum=1">讨论</a></li>
+                        <li><a href="top-list.html">排行</a></li>
+                        <li><a href="publi-bugbox.html">捉虫</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <!--<li class="last"><a href="#">不知道放什么好</a></li>-->
+                        <?php
+                        if($username)
+                        {
+                       echo "<li class='end'><a href='person.html'>$username</a></li>";
+                        echo "<li><a href='source/Logout.php'>退出登录</a></li>";
+                        }
+                        else
+                        {
+                         echo "<li class='end'><a href='login.html'>登录</a></li>";
+                        echo "<li><a href='registe.html'>注册</a></li>";
+                        }
+                        ?>
+                    </ul></nav> </header></div>
+
+
+      <!-- content -->
+<div class="wrapper row2" style="background-color: #f6f5f4">
   <div id="container" class="clear">
     <!-- Slider -->
     <section id="featured_slide">
@@ -59,28 +70,31 @@ $username = $_SESSION['username'];
       <div id="slider">
         <ul>
           <li>
-            <figure><img src="此处是图片链接= =" alt="" />
+            <figure><img src="images/01.jpg" alt="" />
               <figcaption>
-                <h2>活动1</h2>
-                <p>活动1的描述！</p>
+                  <h2 style="color: crimson; font-weight:  bold">BugTracker1.0!</h2>
+                  <p style="font-weight: bold">在BugTracker里，写下您的软件使用经历，记录您在使用过程中遇到的Bug。
+                      在这里与其他用户一同交流，在这里评出您最喜爱的一款软件和最讨厌的一款软件。BugTracker伴您左右。</p>
                 <footer class="more"><a href="#">Read More &raquo;</a></footer>
               </figcaption>
             </figure>
           </li>
           <li>
-            <figure><img src="此处是图片链接= =" alt="" />
+            <figure><img src="images/paihangbang.jpg" alt="点击进入排行榜" />
               <figcaption>
-                <h2>活动2</h2>
-                <p>活动2的描述！</p>
+                <h2  style="color: #04c; font-weight:  bold">排行榜上线啦!</h2>
+                <p style="font-weight: bold">您是否有一款非常钟爱的软件？您是否也有一款非常不看好的软件？
+                    快来BugTracker排行榜，看看您的心头之爱有没有上榜！看看那款让您“吐槽”的软件排名怎么样？
+                   </p>
                 <footer class="more"><a href="#">Read More &raquo;</a></footer>
               </figcaption>
             </figure>
           </li>
           <li>
-            <figure><img src="此处是图片链接= =" alt="" />
+            <figure><img src="images/bbs.jpg" alt="点击进入BBS" />
               <figcaption>
-                <h2>活动3</h2>
-                <p>活动3的描述！</p>
+                  <h2   style="color: #04c; font-weight:  bold">BBS!</h2><h3>in BugTracker!</h3>
+                <p style="font-weight: bold">交流使用心得，交流使用经验，吐槽软件Bug尽在BugTracker的BBS！</p>
                 <footer class="more"><a href="#">Read More &raquo;</a></footer>
               </figcaption>
             </figure>
@@ -115,7 +129,7 @@ $username = $_SESSION['username'];
         </article>
         <article class="one_fifth lastbox">
           <figure><a href="#"><img src="images/8.jpg" width="130" height="130" alt=""></a>
-            <figcaption>用户5</figcaption>
+            <figcaption>下载客户端</figcaption>
           </figure>
         </article>
       </section>

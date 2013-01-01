@@ -1,26 +1,19 @@
 
 <?php
+header("Content-type:text/html;charset=utf-8");
 include("../DBO/DBO.php");
-echo "login.php start!";
 $username = $_POST['username'];
 $password = $_POST['password'];
+echo $username;
 DBO::InitDB();
-$result = DBO::LoginCheck($username,$password);
-
-if($result == "ÕıÈ·")
-  {
-    echo "correct";
+$result = DBO::LoginCheck($username, $password);
+echo $result;
+if ($result == "ok") {
     session_start();
     $_SESSION['UserName'] = $username;
-    echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../index.html;\">";
+    echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../index.html\">";
     exit();
-  }
-else if($result == "ÃÜÂë´íÎó" || $result == "ÓÃ»§²»´æÔÚ")
-  {
-    echo "wrong";
-    echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../login.html;\">";
-  }
-
-
-
+} else if ($result == "å¯†ç é”™è¯¯" || $result == "ç”¨æˆ·ä¸å­˜åœ¨") {
+    echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../login.html\">";
+}
 ?>

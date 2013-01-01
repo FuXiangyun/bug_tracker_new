@@ -1,191 +1,308 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>捉虫——The Bug Tracker</title>
-<link rel="stylesheet" href="styles/layout.css" type="text/css"/>
-<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
-<script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
-<script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
-</head>
-<body>
-<div class="wrapper row1">
-  <header id="header" class="clear">
-    <hgroup>
-      <h1><a href="index.html">捉虫</a></h1>
-      <h2>The New Bug Tracker</h2>
-    </hgroup>
-    <form action="#" method="post">
-      <fieldset>
-        <legend>Search:</legend>
-        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="提交">
-      </fieldset>
-    </form>
-    <nav class="clear">
-      <ul>
-        <li class="active"><a href="index.html">首页</a></li>
-        <li><a href="activities.html">活动</a></li>
-        <li><a href="bbs.html">讨论</a></li>
-        <li><a href="top-list.html">排行</a></li>
-        <li><a href="bug-submit.html">捉虫</a></li>
-        <li><a href="#">联系我们</a></li>
-        <li class="last"><a href="#">不知道放什么好</a></li>
-        <li class="end"><a href="login.html">登录</a></li>
-        <li><a href="registe.html">注册</a></li>
-      </ul></nav> </header></div> 
-<!-- content -->
-<div class="wrapper row2">
-  <div id="container" class="clear">
-       <div>
-        <h3>Bug box</h3>
-      </div>
-            <div>
-        <div  id="tab1">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <input type="checkbox" />
-                </th>
-                <th>Bug名称</th>
-                <th>相关软件</th>
-                <th>Bug描述</th>
-                <th>提交时间</th>
-                <th>功能</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <td colspan="6">
-                  <div>
-                    <select name="dropdown">
-                      <option value="option1">全部的Bug</option>
-                      <option value="option2">删除的Bug</option>
-                    </select>
-                    <a class="button" href="#">请确认</a> </div>
-                  <div class="pagination" align="right"> <a href="#" title="First Page">&laquo; 首页</a><a href="#" title="Previous Page">&laquo; 前一页</a> <a href="#" class="number" title="1">1</a> <a href="#" class="number" title="2">2</a> <a href="#" class="number current" title="3">3</a> <a href="#" class="number" title="4">4</a> <a href="#" title="Next Page">下一页 &raquo;</a><a href="#" title="Last Page">尾页 &raquo;</a> </div>
-                  <!-- End .pagination -->
-                  <div class="clear"></div>
-                </td>
-              </tr>
-            </tfoot>
-            <tbody align="center">
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>周鸿祎我谢谢你！</td>
-                <td><a href="#" title="title">360</a></td>
-                <td> 你妹装了360电脑打不开</td>
-                <td>2012-12-13</td>
-                <td>
-                  <!-- Icons -->
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>周鸿祎我谢谢你！</td>
-                <td><a href="#" title="title">360</a></td>
-                <td> 你妹装了360电脑打不开</td>
-                <td>2012-12-13</td>
-                <td>
-                  <!-- Icons -->
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>周鸿祎我谢谢你！</td>
-                <td><a href="#" title="title">360</a></td>
-                <td> 你妹装了360电脑打不开</td>
-                <td>2012-12-13</td>
-                <td>
-                  <!-- Icons -->
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>information</td>
-                <td><a href="#" title="title">software</a></td>
-                <td>descirption</td>
-                <td>time</td>
-                <td>
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-             <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>information</td>
-                <td><a href="#" title="title">software</a></td>
-                <td>descirption</td>
-                <td>time</td>
-                <td>
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>information</td>
-                <td><a href="#" title="title">software</a></td>
-                <td>descirption</td>
-                <td>time</td>
-                <td>
-                  <a href="#" title="check"><img src="resources/images/icons/pencil.png" alt="check" /></a></td>
-              </tr>
-            </tbody>
-          </table>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>捉虫——The Bug Tracker</title>
+        <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+        <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+        <script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
+        <script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
+
+        <style type="text/css" >
+            .fd{ width:100%; height:auto; position:absolute; top:150px; left:0px; z-index:1; display:none;}
+            .fd_box{ width:520px; height:auto; margin:0px auto; position:relative; }
+            .tm_box{ width:500px; height:350px; padding:10px; background-color: #FF9900; -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px; FILTER: alpha(opacity=80);  -moz-opacity: 0.5; position:absolute; top:0px; left:0px; z-index:2;}
+            .denglu_box{ width:480px; height:320px; padding:10px; background-color:#FFFFFF; -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px; position:absolute; top:10px; left:10px; z-index:3; }
+            .denglu_box h1{ width:270px; height:30px; line-height:30px; font-weight:bold;font-size:18px; margin:0; padding:0px 5px; font-weight:100; color: #FF9900; border-bottom:1px solid #009999;}
+            .denglu_box span{ color:#666666; display:block; margin:10px 0px; padding:0px 5px;}
+            .guanbi{ width:14px; height:13px; background-image:url(images/cross.png); background-repeat:no-repeat; position:absolute; top:25px; right:25px; z-index:4; cursor: pointer;}
+
+        </style>
+    </head>
+    <body>
+        <?php
+        // put your code here
+        $page=$_GET['pagenum'];
+        $kind=$_GET['sortkind'];
+        if($page==null)
+        $page=1;
+         if($kind==null)
+         $kind=1;
+        require 'source/Bug.php';
+        $dbhost = 'localhost';   
+        $dbuser = 'root';  
+        $dbpass = '1234';  
+        $bugs=new Bug();
+        $bugs->Init($dbhost, $dbuser, $dbpass);
+        $bugs->getallbug();
+        $bugs->getbugbynum($page,$kind);
+
+        ?>
+        <div class="wrapper row1">
+            <header id="header" class="clear">
+                <hgroup>
+                    <h1><a href="index.html">捉虫</a></h1>
+                    <h2>The New Bug Tracker</h2>
+                </hgroup>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Search:</legend>
+                        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+                        <input type="submit" id="sf_submit" value="提交">
+                    </fieldset>
+                </form>
+                <nav class="clear">
+                    <ul>
+                         <li class="active"><a href="index.html">首页</a></li>
+                        <li><a href="activities.html">活动</a></li>
+                        <li><a href="bbs.html?pagenum=1">讨论</a></li>
+                        <li><a href="top-list.html">排行</a></li>
+                        <li><a href="publi-bugbox.html">捉虫</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <?php
+                        session_start();
+                        $username = $_SESSION['UserName'];
+                        if($username)
+                        {
+                        echo "<li class='end'><a href='person.html?username=$username'>$username</a></li>";
+                        echo "<li><a href='source/Logout.php'>退出登录</a></li>";
+                        }
+                        else
+                        {
+                        echo "<li class='end'><a href='login.html'>登录</a></li>";
+                        echo "<li><a href='registe.html'>注册</a></li>";
+                        }
+                        ?>
+                    </ul></nav> </header></div> 
+        <!-- content -->
+        <?php
+        $num2=mysql_num_rows($bugs->retval2);
+        for($tes=0;$tes!=$num2;$tes=$tes+1)
+        {
+        $row=  mysql_fetch_array($bugs->retval2);
+        $name="".$row["BugName"];
+        $time="".$row["BugUploadedTime"];
+        $path="".$row["BugPicPath"];
+        $software="".$row["BugProgName"];
+        $detail="".$row["BugDes"];
+        $os="".$row["BugOS"];
+        $username="".$row["UserName"];
+        $id=$row["BugID"];
+
+        echo "<div class='$id' style='display:none'>
+        <div class='fd_box'>
+        <div class='tm_box'></div>
+        <div class='denglu_box'>
+        <h1>$name</h1>
+        <br/>
+        <table>
+        <tr>
+        <td rowspan='5' width='40'><img src='images/排行榜软件封面/360.jpg' alt=''/></td>
+        <td><h2>$name</h2></td>
+        </tr>
+        <tr><td>提交时间：$time</td></tr>
+        <tr><td>Bug提交者：$username</td></tr>
+        <tr><td>Bug所在的软件：$software</td></tr>
+        <tr><td>Bug所在的系统：$os</td></tr>
+
+        </table>
+        <span>Bug的详细信息</span>
+        <textarea style='width:400px;height: 80px'>$detail</textarea>
         </div>
-      </div>
-  </div>
-</div>
-<!-- Footer -->
-<div class="wrapper row3">
-  <div id="footer" class="clear">
-    <!-- ########################################################################################## -->
-    <section class="one_quarter">
-      <h2 class="title">From The Blog</h2>
-      <article>
-        <header>
-          <h2>Post Title</h2>
-        </header>
-        <p>写不出来</p>
-        <footer class="more"><a href="#">Read More &raquo;</a></footer>
-      </article>
-    </section>
-    <section class="one_quarter">
-      <h2 class="title">Quick Links</h2>
-      <nav>
-        <ul>
-          <li><a href="#">随便链接嘛</a></li>
-          <li><a href="#">随便链接嘛</a></li>
-          <li><a href="#">随便链接嘛</a></li>
-          <li><a href="#">随便链接嘛</a></li>
-          <li class="last"><a href="#">随便链接嘛</a></li>
-        </ul>
-      </nav>
-    </section>
-    <section class="two_quarter lastbox">
-      <h2 class="title">About US</h2>
-      <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt="">
-      <p>不知道写啥！！！</p>
-      <footer class="more"><a href="#">Read More &raquo;</a></footer>
-    </section>
-    <!-- ########################################################################################## -->
-  </div>
-</div>
-<!-- Copyright -->
-<div class="wrapper row4">
-  <footer id="copyright" class="clear">
-    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">The Bug Tracker</a></p>
-  </footer>
-</div>
-</body>
+        <div class='guanbi'></div>
+        </div>
+        </div>";
+
+        }?>
+        <div class="wrapper row2">
+            <div id="container" class="clear">
+                <div>
+                    <h3>Bug box</h3>
+                </div>
+                <div>
+                    <div  id="tab1">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Bug名称</th>
+                                    <th>相关软件</th>
+                                    <th>提交时间</th>
+                                    <th>Bug提供者</th>                                 
+                                    <th>功能</th>
+                                </tr>
+                            </thead>
+
+                            <tbody align="center">
+                                <?php
+                                $bugs->getbugbynum($page,$kind);
+                                $num1=mysql_num_rows($bugs->retval);
+                                $pagesize=10;
+                                if ($num1) {
+                                if($num1<$pagesize)
+                                $page_count=1;
+                                if ($num1 % $pagesize) {
+                                $page_count = (int) ($num1 / $pagesize) + 1;
+                                } else {
+                                $page_count = $num1 / $pagesize;
+                                }
+                                } 
+                                for($tes=0;$tes!=$num2;$tes=$tes+1)
+                                {
+                                $row=  mysql_fetch_array($bugs->retval2);
+                                $name="".$row["BugName"];
+                                $time="".$row["BugUploadedTime"];
+                                $path="".$row["BugPicPath"];
+                                $software="".$row["BugProgName"];
+                                $detail="".$row["BugDes"];
+                                $os="".$row["BugOS"];
+                                $username="".$row["UserName"];
+                                $id=$row["BugID"];
+                                echo "
+                                <tr>
+                                <td><a href=\"bbs.html?bugid=$id\"  title='title'>$name</td>
+                                <td>$software</a></td>
+                                <td>$time</td>
+                                <td><a href=\"person.html?username=$username\">$username</td>
+
+                                <td>
+                                <!-- Icons -->
+                                <a href='#' title='check' id='$id'><img src='resources/images/icons/pencil.png' alt='check' /></a></td>
+                                </tr>";
+                                $idd="#".$id;
+                                echo "<script type='text/javascript'>
+                                $(document).ready(function(){
+                                $('$idd').click( function(){
+                                $('.$id').show();
+                                return false;
+                                });
+                                $('.guanbi').click( function(){
+                                $('.$id').hide();
+                                });
+
+                                })
+                                </script>";
+                                $bugs->close();
+                                }?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+<script>
+function goto(vv)
+{
+    if(vv=='1')
+    {
+        window.location.href="source/selectsort.php?dropdown=1";
+    }else if(vv=='2'){
+        window.location.href="source/selectsort.php?dropdown=2";
+    }else if(vv=='3'){
+        window.location.href="source/selectsort.php?dropdown=3";
+    }else if(vv=='4'){
+       window.location.href="source/selectsort.php?dropdown=4";
+    }
+      
+}
+</script>
+                        <div>
+                            <select name="dropdown" onchange="goto(this.value);"> 
+                                <option value='1'>按Bug名称</option>
+                                <option value='2'>按软件名称</option>
+                                <option value='3'>按提交时间</option>
+                                <option value='4'>按Bug提供者</option>
+                            </select></div>
+                        <div class="pagination" align="right"> 
+                            <?php
+                            if($page_count>1)
+                            {
+                            if($page>1)
+                            {
+                            $nn=$page-1;
+                            echo "  <a href='publi-bugbox.html?pagenum=$nn' title='Previous Page'>&laquo; 前一页</a>" ;
+                            echo " <a href='publi-bugbox.html?pagenum=1' class='number' title='1'>1</a> ";
+                            }
+                            else
+                            {
+                            echo "  &laquo; 前一页" ;
+                            echo " 1 ";
+                            }
+                            if($page_count>1)
+                            {
+                            if($page_count<10)
+                            {
+                            for($te=1;$te!=$page_count;$te=$te+1)
+                            {
+                            $nn=$te+1;
+                            if($page!=$nn)
+                            echo "<a href='publi-bugbox.html?pagenum=$nn'  class='number'title='$nn'>$nn</a>";
+                            else
+                            echo "$nn";
+                            }
+                            }
+                            }
+                            if($page==$page_count)
+                            {
+                            echo " 下一页 &raquo;";
+                            }
+                            else
+                            {
+                            $nn=$page+1;
+                            echo " <a href='publi-bugbox.html?pagenum=$nn' title='Next Page'>下一页 &raquo;</a>";
+                            }
+                            }
+                            ?>
+                            <!-- End .pagination -->
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="wrapper row3">
+                <div id="footer" class="clear">
+                    <!-- ########################################################################################## -->
+                    <section class="one_quarter">
+                        <h2 class="title">From The Blog</h2>
+                        <article>
+                            <header>
+                                <h2>Post Title</h2>
+                            </header>
+                            <p>写不出来</p>
+                            <footer class="more"><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </section>
+                    <section class="one_quarter">
+                        <h2 class="title">Quick Links</h2>
+                        <nav>
+                            <ul>
+                                <li><a href="#">随便链接嘛</a></li>
+                                <li><a href="#">随便链接嘛</a></li>
+                                <li><a href="#">随便链接嘛</a></li>
+                                <li><a href="#">随便链接嘛</a></li>
+                                <li class="last"><a href="#">随便链接嘛</a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <section class="two_quarter lastbox">
+                        <h2 class="title">About US</h2>
+                        <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt="">
+                        <p>不知道写啥！！！</p>
+                        <footer class="more"><a href="#">Read More &raquo;</a></footer>
+                    </section>
+                    <!-- ########################################################################################## -->
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="wrapper row4">
+                <footer id="copyright" class="clear">
+                    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">The Bug Tracker</a></p>
+                </footer>
+            </div>
+    </body>
 </html>

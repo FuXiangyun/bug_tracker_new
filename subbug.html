@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Briefcase Template, Free CSS Template</title>
+<link href="styles/templatemo_style.css" rel="stylesheet" type="text/css"media="screen" />
+<link rel="stylesheet" href="styles/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+<script type="text/javascript" src="scripts/jquery-PseudoCSS.1.0.js"></script>
+<script type="text/javascript" src="scripts/jquery-easySlider1.7.js"></script>
+<script src="scripts/jquery.min.js" type="text/javascript"></script>
+<script src="scripts/jquery.nivo.slider.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function preview4()
+    { 
+        var x = document.getElementById("file4"); 
+        var y = document.getElementById("pic4"); 
+        if(!x || !x.value || !y) 
+            return; var patn = /\.jpg$|\.jpeg$|\.gif$/i; 
+        if(patn.test(x.value))
+        {  
+            y.src = "file://localhost/" + x.value; }
+        else
+        {  alert("您选择的似乎不是图像文件。"); }}
+</script>
+<script language="javascript">
+ function showMsg(obj) {
+    var opt = obj.options[obj.selectedIndex]
+    if(opt.value==5)
+        {document.write('<intput type="test" name="elsename"size="20"style="background-color:#e8e8e8;border-width:1px;border-color:#FF9900" \n\
+                        onmouseover="this.style.backgroundColor="#FFF" onmouseout="this.style.backgroundColor="#e8e8e8" >');}
+    
+ }
+</script>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <hgroup>
+      <h1><a href="index.html">捉虫</a></h1>
+      <h2>The New Bug Tracker</h2>
+    </hgroup>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Search:</legend>
+        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+        <input type="submit" id="sf_submit" value="提交">
+      </fieldset>
+    </form>
+    <nav class="clear">
+      <ul>
+       <li class="active"><a href="index.html">首页</a></li>
+                        <li><a href="activities.html">活动</a></li>
+                        <li><a href="bbs.html?pagenum=1">讨论</a></li>
+                        <li><a href="top-list.html">排行</a></li>
+                        <li><a href="publi-bugbox.html">捉虫</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <?php
+                        session_start();
+                        $username = $_SESSION['UserName'];
+                        if($username)
+                        {
+                        echo "<li class='end'><a href='person.html'>$username</a></li>";
+                        echo "<li><a href='source/Logout.php'>退出登录</a></li>";
+                        }
+                        else
+                        {
+                        echo "<li class='end'><a href='login.html'>登录</a></li>";
+                        echo "<li><a href='registe.html'>注册</a></li>";
+                        }
+                        ?>
+      </ul></nav> </header></div>
+    <div style="background-color: #f6f5f4">
+<div id="templatemo_wrapper">
+    <div id="templatemo_main_top"></div>
+     <div id="templatemo_main">
+                <div id="contact_form">
+                    <h3 style="color: #FF9900;font-weight: bold;font-size: 20px">Bug 提交</h3><span>*以下信息请全部填写</span>
+                    <br/><br/>
+                    <form method="post" name="contact" action="source/uploadbug.php" enctype="multipart/form-data">
+                        <span for="author" style="font-size: 13px;font-weight: bold;color:  #333333">Bug的名称: </span>
+                        <input  name="bugname" type="text" size="29"onmouseover="this.style.backgroundColor='#FFF'"
+                        onmouseout="this.style.backgroundColor='#e8e8e8'"style="background-color:#e8e8e8;border-width:1px;border-color: #FF9900"></input>
+                        <span for="author" style="margin-left: 100px;font-size: 15px;font-weight: bold;color:  #333333">Bug发生的软件名: </span>
+                        <input  name="sofname" type="text" size="29"onmouseover="this.style.backgroundColor='#FFF'"
+                        onmouseout="this.style.backgroundColor='#e8e8e8'"style="background-color:#e8e8e8;border-width:1px;border-color: #FF9900"></input>
+                        <br/><br/>
+                        <span for="author" style="font-size: 13px;font-weight: bold;color:  #333333">Bug所在的系统: </span>
+                        <select id="mySelect" name="sysname" style="background-color:#e8e8e8;border-width:1px;border-color: #FF9900">   
+                        <option value="1">Windows</option>   
+                        <option value="2">Linux</option>   
+                        <option value="3">Android</option>   
+                        <option value="4">IOS</option>   
+                        <option value="5" >其他</option>   
+                        </select>  
+                        <span for="author" style="margin-left: 100px;font-size: 15px;font-weight: bold;color:  #333333">Bug标签: </span>
+                        <input  name="tagname" type="text" size="29"onmouseover="this.style.backgroundColor='#FFF'"
+                        onmouseout="this.style.backgroundColor='#e8e8e8'"style="margin-left: 60px;background-color:#e8e8e8;border-width:1px;border-color: #FF9900"></input>
+                        <br/><br/>
+                        <span for="author" style="font-size: 13px;font-weight: bold;color:  #333333">Bug的描述:</span>
+                        <textarea id="text" name="text" rows="0" cols="0" onmouseover="this.style.backgroundColor='#FFF'"
+                        onmouseout="this.style.backgroundColor='#e8e8e8'"style="background-color:#e8e8e8;border-width:1px;border-color: #FF9900"></textarea> 
+                        <br/><br/>
+                        <span for="author" style="font-size: 13px;font-weight: bold;color:  #333333">上传附件:</span>
+                        <input type="file" name="file4" id="file4" onchange="preview4()" /><br/><br/>
+                        <input style="margin-top:30px;float: right"type="submit" value="提交" id="submit" class="submit_btn float_l" />
+			
+                    </form></div>
+               
+            <div class="cleaner"></div>
+        
+     </div>
+    <!-- end of main -->
+    <div id="templatemo_main_bottom"></div>
+    
+</div> <!-- end of templatemo wrapper --></div>
+<div class="wrapper row3">
+  <div id="footer" class="clear">
+    <section class="one_quarter">
+      <h2 class="title">From The Blog</h2>
+      <article>
+        <header>
+          <h2>Post Title</h2>
+        </header>
+        <p>写不出来</p>
+        <footer class="more"><a href="#">Read More &raquo;</a></footer>
+      </article>
+    </section>
+    <section class="one_quarter">
+      <h2 class="title">Quick Links</h2>
+      <nav>
+        <ul>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li><a href="#">随便链接嘛</a></li>
+          <li class="last"><a href="#">随便链接嘛</a></li>
+        </ul>
+      </nav>
+    </section>
+    <section class="two_quarter lastbox">
+      <h2 class="title">About US</h2>
+      <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt="">
+      <p>不知道写啥！！！</p>
+      <footer class="more"><a href="#">Read More &raquo;</a></footer>
+    </section>
+    <!-- ########################################################################################## -->
+  </div>
+</div>
+<!-- Copyright -->
+<div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">The Bug Tracker</a></p>
+  </footer>
+</div>
+</body>
+</html>
