@@ -20,7 +20,6 @@
         </script>
     </head>
     <?php
-    session_start();
     $username = $_SESSION['UserName'];
     ?>
     <body>
@@ -30,10 +29,10 @@
                     <h1><a href="index.html">捉虫</a></h1>
                     <h2>The New Bug Tracker</h2>
                 </hgroup>
-                <form action="#" method="post">
+                <form action="source/Search.php" method="post">
                     <fieldset>
                         <legend>Search:</legend>
-                        <input type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
+                        <input name="searchbar" type="text" value="搜索你想要的…" onFocus="this.value=(this.value=='搜索你想要的…')? '' : this.value ;">
                         <input type="submit" id="sf_submit" value="提交">
                     </fieldset>
                 </form>
